@@ -108,8 +108,8 @@ h1:hover {
 }
 
 
-  @media (max-width 600px) {
-    .lottery-container {
+  @media (max-width 400px) {
+    .showcase {
         margin: 20px;
     }
 }
