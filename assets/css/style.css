@@ -120,4 +120,54 @@ h1:hover {
 }
 
 
+/* Portfolio cards Start */
 
+#portfolioCards h2 {
+    font-size: 32px;
+    margin: auto;
+    color: color grey;
+    text-align: center;
+    padding: 0px 50px 50px 50px;
+  }
+
+#portfolioCards {
+    padding: 50px 50px 50px 50px;
+}
+
+/* Portfolio cards End */
+
+/* Footer Styles */
+
+  #navBar2 {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5%;
+  }
+  
+  #navigation2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #navigation2 a {
+    cursor: pointer;
+    text-decoration: none;
+  
+  }
+
+  footer {
+    position: flex;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    margin-top: 50px;
+  }
+  .cardContainer {
+    margin-bottom: 15px;
+  }
+  .card {
+    margin: 0 auto;
+  }
