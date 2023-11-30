@@ -6,7 +6,7 @@
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': '8412d21c6amsh6caf2d6964fecb0p154d87jsn1175739824ca',
+// 		'X-RapidAPI-Key': '',
 // 		'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
 // 	}
 // };
@@ -24,7 +24,7 @@
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': '8412d21c6amsh6caf2d6964fecb0p154d87jsn1175739824ca',
+// 		'X-RapidAPI-Key': '',
 // 		'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
 // 	}
 // };
@@ -42,7 +42,7 @@
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': '8412d21c6amsh6caf2d6964fecb0p154d87jsn1175739824ca',
+// 		'X-RapidAPI-Key': '',
 // 		'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
 // 	}
 // };
@@ -62,7 +62,7 @@
 //   method: 'POST',
 //   headers: {
 //     'content-type': 'application/json',
-//     'X-RapidAPI-Key': '8412d21c6amsh6caf2d6964fecb0p154d87jsn1175739824ca',
+//     'X-RapidAPI-Key': '',
 //     'X-RapidAPI-Host': 'musicapi13.p.rapidapi.com',
 //   },
 //   body: JSON.stringify({
