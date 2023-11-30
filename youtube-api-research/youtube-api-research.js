@@ -1,3 +1,4 @@
+console.log("hello")
 // // youtube api - search endpoint
 
 
@@ -54,32 +55,23 @@
 //   console.log(data)
 //   });
 
+var videoEl = document.getElementById("video");
+var id = fetch("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUwobzUc3z-0PrFpoRxNszXQ&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    console.log(data.items[0].snippet.title);
+    videoEl.innerText = data.items[0].snippet.title;
+    console.log(data.items[0].snippet.resourceId
+      .videoId)
+      var videoId = data.items[0].snippet.resourceId
+      .videoId
+      console.log(videoId)
+      var youtubeUrl = "https://www.youtube.com/watch?v=" + videoId 
 
-// musicapi - public search endpoint
-
-// const url = 'https://musicapi13.p.rapidapi.com/public/search';
-// const options = {
-//   method: 'POST',
-//   headers: {
-//     'content-type': 'application/json',
-//     'X-RapidAPI-Key': '8412d21c6amsh6caf2d6964fecb0p154d87jsn1175739824ca',
-//     'X-RapidAPI-Host': 'musicapi13.p.rapidapi.com',
-//   },
-//   body: JSON.stringify({
-//     track: '',
-//     artist: 'ed sheeran',
-//     type: 'album',
-//     sources: ['youtube'],
-//   }),
-// };
-
-// fetch(url, options)
-//   .then(response => response.json())
-//   .then(data => {
-//     // Handle the response data
-//     console.log(data);
-//   })
-
-// radioworldapi - get genre endpoint
+      console.log(youtubeUrl)
+      var iframeElement = document.createElement('iframe');
+      
+  });
 
 
