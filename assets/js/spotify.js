@@ -1,9 +1,7 @@
 //   ------------  Plan -------------
 
 // Get access token using client Id and secret
-
-
-//https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow
+    //https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow
 
 var client_id = '';
 var client_secret = '';
@@ -26,7 +24,25 @@ async function getToken() {
 
 
 console.log(getToken());
+
+
 // Then make an api call using token
+async function getTrackInfo(access_token) {
+const response = await fetch("https://api.spotify.com/v1/tracks/4cOdK2wGLETKBW3PvgPWqT", {
+    method: 'GET',
+    headers: { 'Authorization': 'Bearer ' + access_token },
+});
+
+return await response.json();
+}
+
+
+// Call the API
+getToken().then(response => {
+    getTrackInfo(response.access_token).then(profile => {
+        console.log(profile)
+    })
+});
 
 // Modify the api to get playlists
 
