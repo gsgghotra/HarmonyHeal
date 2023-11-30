@@ -1,3 +1,4 @@
+/*
 * {
     box-sizing: border-box;
     margin: 0;
@@ -89,36 +90,9 @@ h1 {
 
 h1:hover {
   color: rgb(86, 64, 251);
-}
-
-@font-face {
-    font-family: "catcheye-webfont";
-    src: url('../fonts/coolvetica_rg-webfont.woff2') format('woff2'),
-         url('../fonts/coolvetica_rg-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-  @media (max-width 400px) {
-    .showcase {
-        margin: 20px;
-    }
 } 
 
-@media (max-width: 850px) {
-    h1 {
-        font-size: 40px;
-        padding: 5px; 
-        margin: 5px;
-        
-    }
-}
-
+*/
 
 /* Portfolio cards Start */
 
@@ -171,3 +145,31 @@ h1:hover {
   .card {
     margin: 0 auto;
   }
+
+@font-face {
+    font-family: "catcheye-webfont";
+    src: url('../fonts/coolvetica_rg-webfont.woff2') format('woff2'),
+         url('../fonts/coolvetica_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+  @media (max-width 400px) {
+    .showcase {
+        margin: 20px;
+    }
+} 
+
+@media (max-width: 850px) {
+    h1 {
+        font-size: 40px;
+        padding: 5px; 
+        margin: 5px;
+        
+    }
+}
