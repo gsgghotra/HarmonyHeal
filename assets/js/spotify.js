@@ -3,10 +3,6 @@
 // Get access token using client Id and secret
     //https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow
 
-
-
-
-
 var client_id = '';
 var client_secret = '';
 
@@ -69,9 +65,19 @@ getToken()
         let playlistEl = document.getElementById("playlists");
         playlistEl.append(cardBox)
 
+
+        // Dom manipulation
         let themeEl = document.querySelector("#playlists");
+        let frameEl = themeEl.children[0];
         themeEl.classList.add("test");
+
+        //Add class to frame
+        frameEl.classList.add("frameClass")
         console.log("This is theme element ", themeEl.childNodes[1])
+
+        // 
+        let test1 = document.querySelector("#__next")
+        test1.children[0].children[1].children[1]
         
     })
 });
