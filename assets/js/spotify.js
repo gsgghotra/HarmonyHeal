@@ -35,7 +35,7 @@ return await response.json();
 
 //This function returns playlist info
 async function getPlaylistInfo(access_token) {
-    const response = await fetch("https://api.spotify.com/v1/playlists/37i9dQZF1DX5cZuAHLNjGz", {
+    const response = await fetch("https://api.spotify.com/v1/playlists/0eU3ubPAnqeSMi9K3YKVpC", {
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + access_token },
     });
@@ -55,15 +55,25 @@ getToken()
 
         //Call the spotifyAPIReady function to play the track
 
-        //Create a div
+
         let cardBox = document.createElement("div");
         cardBox.classList.add("card","bg-dark","text-white");
         let cardHead = document.createElement("h2");
-        cardHead.textContent = data.description
+        cardHead.textContent = data.name
         cardBox.appendChild(cardHead);
 
         let playlistEl = document.getElementById("playlists");
-        playlistEl.appendChild(cardBox)
+        playlistEl.append(cardBox)
+
+
+        // Dom manipulation
+        let themeEl = document.querySelector("#playlists");
+        let frameEl = themeEl.children[0];
+
+        console.log(themeEl)
+
+        // 
+        
     })
 });
 
@@ -73,20 +83,22 @@ getToken()
 
 // retrieve playlists
 
-// Use iframe provided by spotify to play those playlists
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    //
-};
-
-//Provide the uri from the chosen List
 
 
+// Use iframe provided by Spotify to play the track
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
     const element = document.getElementById('embed-iframe');
     const options = {
-        uri: "spotify:track:72vuBPMhwFNlSYpTSf6fVD"
+        uri:  "spotify:track:0vtp6L7PjGRNfbNefNWpjc"  // Use the provided URI or a default one
     };
-    const callback = (EmbedController) => {};
+    const callback = (EmbedController) => {
+
+        //Play on the click
+        let togglePlay = document.querySelector('#togglePlay');
+        togglePlay.addEventListener('click', ()=>{
+        EmbedController.play();
+    })
+    };
     IFrameAPI.createController(element, options, callback);
 };
 
