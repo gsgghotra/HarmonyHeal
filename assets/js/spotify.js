@@ -69,15 +69,10 @@ getToken()
         // Dom manipulation
         let themeEl = document.querySelector("#playlists");
         let frameEl = themeEl.children[0];
-        themeEl.classList.add("test");
 
-        //Add class to frame
-        frameEl.classList.add("frameClass")
-        console.log("This is theme element ", themeEl.childNodes[1])
+        console.log(themeEl)
 
         // 
-        let test1 = document.querySelector("#__next")
-        test1.children[0].children[1].children[1]
         
     })
 });
@@ -88,10 +83,7 @@ getToken()
 
 // retrieve playlists
 
-// Use iframe provided by spotify to play those playlists
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    //
-};
+
 
 // Use iframe provided by Spotify to play the track
 window.onSpotifyIframeApiReady = (IFrameAPI) => {
@@ -100,6 +92,12 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
         uri:  "spotify:track:0vtp6L7PjGRNfbNefNWpjc"  // Use the provided URI or a default one
     };
     const callback = (EmbedController) => {
+
+        //Play on the click
+        let togglePlay = document.querySelector('#togglePlay');
+        togglePlay.addEventListener('click', ()=>{
+        EmbedController.play();
+    })
     };
     IFrameAPI.createController(element, options, callback);
 };

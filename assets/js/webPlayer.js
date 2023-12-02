@@ -1,6 +1,7 @@
 // Replace 'YOUR_CLIENT_ID' with your Spotify App Client ID
-const client_id = '';
-const client_secret = '';
+const SPOTIFYTOKEN = '';
+var client_id = '';
+var client_secret = '';
 
 async function getToken() {
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -13,16 +14,30 @@ async function getToken() {
             'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
         },
     });
-
-    // Return token only
-    const data = await response.json();
-    return data.access_token;
+    return await response.json();
 }
 
-window.onSpotifyWebPlaybackSDKReady = async() => {
-    const token = '';
+async function getDevices() {
+    const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
+        headers: {
+            'Authorization': 'Bearer ' + await getToken(),
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to get devices. Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.devices;
+}
+
+getDevices()
+window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = SPOTIFYTOKEN;
     const player = new Spotify.Player({
         name: 'HarmonyHeal',
+        spotify_uri: "spotify:track:72vuBPMhwFNlSYpTSf6fVD",
         getOAuthToken: cb => { cb(token); },
         volume: 0.5
     });
@@ -55,6 +70,8 @@ window.onSpotifyWebPlaybackSDKReady = async() => {
 
     player.connect();
 
+
+
     player.connect().then(success => {
     if (success) {
         console.log('The Web Playback SDK successfully connected to Spotify!');
@@ -65,29 +82,39 @@ window.onSpotifyWebPlaybackSDKReady = async() => {
     togglePlay.addEventListener('click', ()=>{
         player.togglePlay();
         console.log(getTrackInfo(token))
+
         player.getCurrentState().then(state => {
             if (!state) {
                 console.error('User is not playing music through the Web Playback SDK');
                 return;
             }
+
+            console.log("State Object: ",state)
             
             var current_track = state.track_window.current_track;
             var next_track = state.track_window.next_tracks[0];
             
+            //Add Song title to the page
+            let songEl = document.querySelector("#songTitle")
+            songEl.innerText = current_track.name
+
             console.log('Currently Playing', current_track);
             console.log('Playing Next', next_track);
         });
     })
 
     //This function returns track info
-    async function getTrackInfo(access_token) {
-        const response = await fetch("https://api.spotify.com/v1/tracks/4cOdK2wGLETKBW3PvgPWqT", {
+    async function getTrackInfo() {
+        const response = await fetch("https://api.spotify.com/v1/tracks/72vuBPMhwFNlSYpTSf6fVD", {
             method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + access_token },
+            headers: { 'Authorization': 'Bearer ' + await getToken() },
         });
         
-        return await response.json();
+        console.log("Track:", response.json())
         }
-    
+        // getTrackInfo()
+
+
+
 }
 
