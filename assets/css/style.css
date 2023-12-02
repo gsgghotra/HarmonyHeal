@@ -9,9 +9,11 @@
 
 :root {
   --main-bg-color: #FFEF9F;
-  --main-card-color: #808df6;
+  --main-card-color: #fff3f5;
   --main-text-color: #2E2E3A;
   --main-nav-color: #90F1EF;
+  --surface-color: #fff;
+  --curve: 40;
 }
 
 @font-face {
@@ -31,10 +33,76 @@ body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   font-family: "catcheye-webfont";
+  background-image: url(../images/Clouds-Above.png)
 }
 
 .navbar {
-  background-color: var(--main-nav-color) !important;
+  background-color: ;
+}
+
+button {
+	width: 120px;
+	height: 30px;
+	cursor: pointer;
+	border: 0px solid #5b3f69;
+	background: #34283b;
+	transition: 200ms;
+}
+
+button span {
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 20px;
+	color: #f0ecfc;
+	transition: 500ms;
+}
+
+button::before, button::after {
+	content: '';
+	position: absolute;
+	margin-left: -75px;
+	margin-top: -25px;
+	width: 140px;
+	height: 40px;
+	z-index: -1;
+}
+
+button::before {
+	border: 3px solid #7e5791;
+	transition: 200ms;
+}
+
+button::after {
+	border: 3px solid #b37ccf;
+	transition: 500ms;
+}
+
+button:hover {
+	border: 3px solid #5b3f69;
+}
+
+button:hover span {
+	letter-spacing: 4px;
+	font-size: 20px;
+}
+
+button:hover::before {
+	width: 150px;
+	height: 50px;
+	margin-left: -80px;
+	margin-top: -30px;
+}
+
+button:hover::after {
+	width: 160px;
+	height: 60px;
+	margin-left: -85px;
+	margin-top: -35px;
+}
+
+button:focus {
+	outline: none;
 }
 
 #portfolioCards h2 {
@@ -50,6 +118,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+ 
 }
 
 .container-fluid {
@@ -64,7 +133,10 @@ body {
 
 #portfolioCards .card {
   background-color: var(--main-card-color);
+  border-radius: calc(var(--curve) * 2.9px);
 }
+
+
 /* Portfolio cards End */
 
 /* Footer Styles */
