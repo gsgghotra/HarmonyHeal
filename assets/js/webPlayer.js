@@ -19,10 +19,12 @@ async function getToken() {
     return data.access_token;
 }
 
-getToken()
-    .then((tokenPassed) => {
-       console.log("Token passed - ", tokenPassed)
-    })
-    .catch((error) => {
-        console.error('Error:', error);
+window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = getToken();
+    const player = new Spotify.Player({
+        name: 'HarmonyHeal',
+        getOAuthToken: cb => { cb(token); },
+        volume: 0.5
     });
+    console.log("Player: ", player)
+    }
