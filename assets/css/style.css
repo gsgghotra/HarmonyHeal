@@ -1,16 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 
 /* Portfolio cards Start */
 
 :root {
   --main-bg-color: #FFEF9F;
-  --main-card-color: #FFD6E0;
+  --main-card-color: #808df6;
   --main-text-color: #2E2E3A;
   --main-nav-color: #90F1EF;
 }
 
+@font-face {
+  font-family: "catcheye-webfont";
+  src: url('../fonts/coolvetica_rg-webfont.woff2') format('woff2'),
+       url('../fonts/coolvetica_rg-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
+  font-family: "catcheye-webfont";
 }
 
 .navbar {
@@ -82,10 +102,6 @@ body {
     background-color: #90F1EF;
 }
 
-
-
-
-
 .cardContainer {
   margin-bottom: 15px;
 }
@@ -93,146 +109,9 @@ body {
   margin: 0 auto;
 }
 
-  /*
-
-@font-face {
-    font-family: "catcheye-webfont";
-    src: url('../fonts/coolvetica_rg-webfont.woff2') format('woff2'),
-         url('../fonts/coolvetica_rg-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-
-  @media (max-width 400px) {
-    .showcase {
-        margin: 20px;
-    }
-} 
-
 @media (max-width: 850px) {
-    h1 {
-        font-size: 40px;
-        padding: 5px; 
-        margin: 5px;
-        
-    }
-}
-
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-.showcase {
-    position: absolute;
-    right: 0;
-    width: 100%;
-    min-height: 100vh;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #111;
-    color: #fff;
-    z-index: 2;
-}
-
-
-.showcase header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 100px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
 }
-
-
-.showcase video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width:100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
- } 
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    mix-blend-mode: overlay;
-}
-
-.text {
-    position: relative;
-    z-index: 10;
-}
-
-
-
-.text p {
-    font-size: 1.1em;
-    margin: 20px 0;
-    font-weight: 200;
-}
-
-body {
-    background-color: rgba(35, 31, 251, 0.868)
-}
-
-
-h1 {
-    text-align: center;
-    color: hsl(0, 0%, 0%);
-    line-height: 1;
-    font-family: "catcheye-webfont", "PT Sans", Calibri, Tahoma, sans-serif;
-    font-size: 100px;
-    padding: 100px;
-  }
-
-
-h1 {
-  font-weight: 500;
-  color:rgb(32, 160, 251);
-  text-decoration: inherit;
-} 
-
-h1:hover {
-  color: rgb(86, 64, 251);
-} 
-
-
-@media (max-width: 850px) {
-    h1 {
-        font-size: 40px;
-        padding: 5px; 
-        margin: 5px;
-        
-    }
-}
-
-/* Portfolio cards Start */
-
-
-/* Portfolio cards End */
-
-/* Footer Styles */
 
   #navBar2 {
     display: flex;
