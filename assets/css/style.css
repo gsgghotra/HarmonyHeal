@@ -42,11 +42,12 @@ body {
 
 button {
 	width: 120px;
-	height: 30px;
+	height: 37px;
 	cursor: pointer;
 	border: 0px solid #5b3f69;
 	background: #34283b;
 	transition: 200ms;
+  border-radius: calc(var(--curve) * 2.9px);
 }
 
 button span {
