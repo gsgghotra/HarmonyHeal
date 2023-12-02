@@ -9,9 +9,9 @@
 
 :root {
   --main-bg-color: #FFEF9F;
-  --main-card-color: #fff3f5;
+  --main-card-color: #ffdfe3;
   --main-text-color: #2E2E3A;
-  --main-nav-color: #90F1EF;
+  --main-nav-color: #ffd2d9;
   --surface-color: #fff;
   --curve: 40;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .navbar {
-  background-color: ;
+  background-color: var(--main-nav-color) !important;
 }
 
 button {
@@ -156,13 +156,11 @@ button:focus {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: #90F1EF;
 }
 
 .footer-column {
     flex: 1;
     margin-right: 20px;
-    background-color: #90F1EF;
 }
 
 .footer-column h4 {
@@ -172,7 +170,7 @@ button:focus {
 
 .footer-row {
     margin-top: 10px;
-    background-color: #90F1EF;
+    background-color: ;
 }
 
 .cardContainer {
