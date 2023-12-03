@@ -93,11 +93,25 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     };
     const callback = (EmbedController) => {
 
-        //Play on the click
+        //Play on the click button
         let togglePlay = document.querySelector('#togglePlay');
         togglePlay.addEventListener('click', ()=>{
         EmbedController.play();
-    })
+        })
+        //Click on option1
+        let option1 = document.querySelector('#option1');
+        option1.addEventListener('click', ()=>{
+            EmbedController.loadUri('spotify:track:09T2kn41rmuRgKozR3fJlH');
+            //Play after Choosing Audio source
+            EmbedController.play();
+        })
+
+        //Lets Click on Parent div of option
+        let optionSection = document.querySelector('#optionSection');
+        optionSection.addEventListener('click', event => {
+            console.log(event.target.id)
+        })
+
     };
     IFrameAPI.createController(element, options, callback);
 };
