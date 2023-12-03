@@ -47,31 +47,20 @@ async function playerControls(EmbedController){
         
     })
 
-    //Click on option1
-    let option1 = document.querySelector('#option1');
 
-    //Operate Serach
-    option1.addEventListener('click', async (event)=>{
 
-        // EmbedController.loadUri('spotify:track:09T2kn41rmuRgKozR3fJlH');
-        //Play after Choosing Audio source
-        // EmbedController.play();
-        let searchText;
-        console.log(event.target.dataset.search)
+    //Lets Click on Parent div of option
+    let optionSection = document.querySelector('#optionSection');
+    optionSection.addEventListener('click', async(event) => {
+        // Only trigger if the element has dataset
         if(event.target.dataset.search){
+            console.log(event.target.dataset.search)
             searchText = event.target.dataset.search;
             let newTrack = await fetchDataManager(searchText);
             console.log("Lets play new Track: ", newTrack)
             EmbedController.loadUri(newTrack);
             EmbedController.play();
         }
-        //fetchDataManager()
-    })
-
-    //Lets Click on Parent div of option
-    let optionSection = document.querySelector('#optionSection');
-    optionSection.addEventListener('click', event => {
-        console.log(event.target.id)
     })
 }
 
@@ -84,12 +73,14 @@ async function fetchDataManager(searchText) {
             const searchResult = await getSearchResult(response.access_token, searchText);
             //Get Album Data 
             const findTrackResult = await findTrack(searchResult)
+            
     
             //GetTrack
-            const getTrackResult = await getAlbumInfo(findTrackResult)
+            const getTrackResult = await getPlaylistInfo(findTrackResult)
+            console.log("playlists", getTrackResult.tracks.items)
     
             //Manage Tracks
-            const manageTrackResult = await manageTrack(getTrackResult);
+            const manageTrackResult = await manageTrack(getTrackResult.tracks.items);
     
             if (manageTrackResult){
                 console.log("Success");
@@ -115,19 +106,19 @@ async function getTrackInfo(access_token) {
 
 //This function searches albums
 async function getSearchResult(token, searchText) {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Calbum&limit=1`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Cplaylist&limit=1`, {
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + token },
     });
     let searchRes = response.json()
-    //console.log("Search Result: ", searchRes)
+    console.log("Search Result: ", searchRes)
     return searchRes
 }
 
 //This function returns Album info
-async function getAlbumInfo(album) {
+async function getPlaylistInfo(playlist) {
     const token = await getToken();
-    const response = await fetch(album, {
+    const response = await fetch(playlist, {
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + token.access_token},
     });
@@ -136,30 +127,30 @@ async function getAlbumInfo(album) {
 
 async function findTrack(data){
     //List of tracks
-    console.log("First album from search: ", data.albums.items);
-    let totalItems = data.albums.items.length
+    console.log("First album from search: ", data.playlists.items);
+    let totalItems = data.playlists.items.length
     let imageEl = document.querySelector("#searchResults");
 
     //If more than 1 limit used during search
     for(let i = 0; i < totalItems; i++){
-        console.log(data.albums.items[i].name)
+        console.log(data.playlists.items[i].name)
 
         let title = document.createElement("h5");
         let image = document.createElement("img");
-        image.setAttribute("src", data.albums.items[i].images[0].url);
-        title.innerText = data.albums.items[i].name+ " - " +data.albums.items[i].artists[0].name
+        image.setAttribute("src", data.playlists.items[i].images[0].url);
+        title.innerText = data.playlists.items[i].name+ " - " +data.playlists.items[i].owner.display_name
         imageEl.append(image);
         imageEl.append(title)
-        console.log(data.albums.items[i].images[0].url)
+        console.log(data.playlists.items[i].images[0].url)
     }
 
     //Return url of the album
-    return data.albums.items[0].href;
+    return data.playlists.items[0].href;
 }
 
 async function manageTrack(data){
-    console.log("List of Tracks: ", data.tracks.items[0].uri)
-    if (data.tracks.items[0].uri){
-        return data.tracks.items[0].uri
+    console.log("List of Tracks: ", data)
+    if (data[0].track.uri){
+        return data[0].track.uri
     }
 }
