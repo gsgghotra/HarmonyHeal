@@ -52,6 +52,7 @@ async function playerControls(EmbedController){
     //Lets Click on Parent div of option
     let optionSection = document.querySelector('#optionSection');
     let title = document.querySelector("#songTitle");
+    let mediaPlayerEl = document.querySelector('#mediaPlayer')
     optionSection.addEventListener('click', async(event) => {
         // Only trigger if the element has dataset
         if(event.target.dataset.search){
@@ -63,6 +64,7 @@ async function playerControls(EmbedController){
             console.log("Lets play new Track: ", allTracks[songNumber].track.uri)
             EmbedController.loadUri(allTracks[songNumber].track.uri);
             EmbedController.play();
+            mediaPlayerEl.classList.remove("hidden");
             spotifyPlay.innerHTML = "Pause";
 
             //If Clicked Next

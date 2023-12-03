@@ -49,6 +49,13 @@
             margin: 10px;
         }
 
+        .hidden{
+            visibility: hidden;
+        }
+
+        .visible{
+            visibility: visible;
+        }
         #mediaPlayer {
             width: 500px;
             height: 500px;
@@ -66,10 +73,18 @@
             text-align: center;
         }
         .controller{
+            border: 1px solid beige;
+            align-items: center;
+            justify-content: space-evenly;
             display: grid;
+            grid-auto-flow: column;
         }
         .timer{
             text-align: center;
+        }
+        #spotifyPrev, #spotifyNext, #spotifyPlay{
+            display: inline;
+            width: 55px;
         }
     </style>
 </head>
@@ -86,7 +101,7 @@
     </div>
     <main id="playlists">
 
-        <div id="mediaPlayer">
+        <div id="mediaPlayer" class="hidden">
             <img src="assets/images/Sleep.png" id="songArt" alt="Music Art">
             <h4 class="musicTitle" id="songTitle"> Song Title</h4>
             <p class="timer" id="timer">0:00</p>
