@@ -31,7 +31,7 @@
         iframe{
             width: 300px;
             max-height: 100px;
-            /* visibility: collapse; */
+            visibility: collapse;
         }
 
         .option{
@@ -48,6 +48,29 @@
             width: 200px;
             margin: 10px;
         }
+
+        #mediaPlayer {
+            width: 500px;
+            height: 500px;
+            border: 1px solid grey;
+            background-color: rgb(219, 219, 219);
+            justify-content: center;
+            display: grid;
+        }
+        #mediaPlayer img{
+            width: 300px;
+            height: 300px;
+            margin: 0px auto;
+        }
+        #mediaPlayer h4{
+            text-align: center;
+        }
+        .controller{
+            display: grid;
+        }
+        .timer{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -62,8 +85,17 @@
 
     </div>
     <main id="playlists">
-        <div id="songTitle"> </div>
-        <button id="spotifyPlay">Play</button>
+
+        <div id="mediaPlayer">
+            <img src="assets/images/Sleep.png" id="songArt" alt="Music Art">
+            <h4 class="musicTitle" id="songTitle"> Song Title</h4>
+            <p class="timer" id="timer">0:00</p>
+            <div class="controller">
+                <button id="spotifyPrev">Prev</button>
+                <button id="spotifyPlay">Play</button>
+                <button id="spotifyNext">Next</button>
+            </div>
+        </div>
         <div id="embed-iframe"></div>
     </main>
     

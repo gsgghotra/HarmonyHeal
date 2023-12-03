@@ -60,8 +60,13 @@ async function playerControls(EmbedController){
             console.log("Lets play new Track: ", newTrack)
             EmbedController.loadUri(newTrack);
             EmbedController.play();
+            spotifyPlay.innerHTML = "Pause";
         }
     })
+
+    EmbedController.addListener('playback_update', e => {
+        document.getElementById('timer').innerText = `${parseInt(e.data.position / 1000, 10)} s`;
+        });
 }
 
 // Then make an api call using token
@@ -130,17 +135,19 @@ async function findTrack(data){
     console.log("First album from search: ", data.playlists.items);
     let totalItems = data.playlists.items.length
     let imageEl = document.querySelector("#searchResults");
+    imageEl.innerHTML = ""
 
     //If more than 1 limit used during search
     for(let i = 0; i < totalItems; i++){
         console.log(data.playlists.items[i].name)
 
-        let title = document.createElement("h5");
-        let image = document.createElement("img");
-        image.setAttribute("src", data.playlists.items[i].images[0].url);
-        title.innerText = data.playlists.items[i].name+ " - " +data.playlists.items[i].owner.display_name
-        imageEl.append(image);
-        imageEl.append(title)
+        let title = document.querySelector("#songTitle");
+        let songArt = document.querySelector("#songArt");
+        songArt.removeAttribute("src");
+
+        songArt.setAttribute("src", data.playlists.items[i].images[0].url);
+        title.innerText = data.playlists.items[i].name
+
         console.log(data.playlists.items[i].images[0].url)
     }
 
@@ -154,3 +161,4 @@ async function manageTrack(data){
         return data[0].track.uri
     }
 }
+
