@@ -34,48 +34,61 @@ return await response.json();
 }
 
 //This function returns playlist info
-async function getPlaylistInfo(access_token) {
-    const response = await fetch("https://api.spotify.com/v1/playlists/0eU3ubPAnqeSMi9K3YKVpC", {
+async function getAlbumInfo( album) {
+    let token = await getToken();
+    const response = await fetch(album, {
         method: 'GET',
-        headers: { 'Authorization': 'Bearer ' + access_token },
+        headers: { 'Authorization': 'Bearer ' + token.access_token},
     });
     
     return await response.json();
     }
 
+
+//This function searches albums
+async function getSearchResult(access_token) {
+    const response = await fetch("https://api.spotify.com/v1/search?q=calmly&search?q=Sleep&type=artist%2Calbum&limit=1", {
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer ' + access_token },
+    });
+    let searchRes = response.json()
+    //console.log("Search Result: ", searchRes)
+    return searchRes
+}
+
 // Call the API
 getToken()
 .then(response => {
-    getPlaylistInfo(response.access_token)
+    //Run search here and retuen the result
+    return getSearchResult(response.access_token);
+})
 .then(data => {
-        console.log(data);
-
         //List of tracks
-        console.log("First track in the playlist", data.uri);
+        console.log("First album from search: ", data.albums.items);
+        let totalItems = data.albums.items.length
+        let imageEl = document.querySelector("#searchResults");
 
-        //Call the spotifyAPIReady function to play the track
+        //If more than 1 limit used during search
+        for(let i = 0; i < totalItems; i++){
+            console.log(data.albums.items[i].name)
 
+            let title = document.createElement("h5");
+            let image = document.createElement("img");
+            image.setAttribute("src", data.albums.items[i].images[0].url);
+            title.innerText = data.albums.items[i].name+ " - " +data.albums.items[i].artists[0].name
+            imageEl.append(image);
+            imageEl.append(title)
+            console.log(data.albums.items[i].images[0].url)
+        }
 
-        let cardBox = document.createElement("div");
-        cardBox.classList.add("card","bg-dark","text-white");
-        let cardHead = document.createElement("h2");
-        cardHead.textContent = data.name
-        cardBox.appendChild(cardHead);
+        //Return url of the album
+        return data.albums.items[0].href;
+})
+.then( data => {
+    console.log ("Lets get the album ", data)
 
-        let playlistEl = document.getElementById("playlists");
-        playlistEl.append(cardBox)
-
-
-        // Dom manipulation
-        let themeEl = document.querySelector("#playlists");
-        let frameEl = themeEl.children[0];
-
-        console.log(themeEl)
-
-        // 
-        
-    })
-});
+    console.log(getAlbumInfo(data))
+})
 
 // Modify the api to get playlists
 
