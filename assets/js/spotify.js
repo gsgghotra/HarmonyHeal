@@ -51,19 +51,58 @@ async function playerControls(EmbedController){
 
     //Lets Click on Parent div of option
     let optionSection = document.querySelector('#optionSection');
+    let title = document.querySelector("#songTitle");
     optionSection.addEventListener('click', async(event) => {
         // Only trigger if the element has dataset
         if(event.target.dataset.search){
-            console.log(event.target.dataset.search)
+            // console.log(event.target.dataset.search)
+            let songNumber = 1;
             searchText = event.target.dataset.search;
-            let newTrack = await fetchDataManager(searchText);
-            console.log("Lets play new Track: ", newTrack)
-            EmbedController.loadUri(newTrack);
+            let allTracks = await fetchDataManager(searchText);
+
+            console.log("Lets play new Track: ", allTracks[songNumber].track.uri)
+            EmbedController.loadUri(allTracks[songNumber].track.uri);
             EmbedController.play();
             spotifyPlay.innerHTML = "Pause";
+
+            //If Clicked Next
+            let nextBtn = document.querySelector("#spotifyNext");
+            nextBtn.addEventListener('click', (event)=>{
+                if(songNumber < allTracks.length - 1){
+                    songNumber += 1;
+                } else {
+                    songNumber = 0;
+                }
+                console.log("Next Song ", songNumber , "of", allTracks.length - 1);
+                console.log("Lets play new Track: ", allTracks[songNumber].track.name);
+                //Update title of next song
+                title.innerText = allTracks[songNumber].track.name;
+                EmbedController.loadUri(allTracks[songNumber].track.uri);
+                EmbedController.play();
+                spotifyPlay.innerHTML = "Pause";
+            })
+
+                        //If Clicked Next
+            let prevBtn = document.querySelector("#spotifyPrev");
+            prevBtn.addEventListener('click', (event)=>{
+                if(songNumber == 0){
+                    songNumber = allTracks.length - 1;
+                } else {
+                    songNumber -= 1;
+                }
+                console.log("Prev Song ", songNumber , "of", allTracks.length);
+                console.log("Lets play new Track: ", allTracks[songNumber].track.name , allTracks[songNumber]);
+                //Update title of next song
+                title.innerText = allTracks[songNumber].track.name;
+                EmbedController.loadUri(allTracks[songNumber].track.uri);
+                EmbedController.play();
+                spotifyPlay.innerHTML = "Pause";
+            })
+
         }
     })
 
+    //Timer of the song
     EmbedController.addListener('playback_update', e => {
         document.getElementById('timer').innerText = `${parseInt(e.data.position / 1000, 10)} s`;
         });
@@ -157,8 +196,8 @@ async function findTrack(data){
 
 async function manageTrack(data){
     console.log("List of Tracks: ", data)
-    if (data[0].track.uri){
-        return data[0].track.uri
+    if (data.length){
+        return data;
     }
 }
 
