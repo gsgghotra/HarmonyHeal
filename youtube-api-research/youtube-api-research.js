@@ -1,6 +1,6 @@
 function happy(){
 var videoEl = document.getElementById("video");
-fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww1T4&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww1T4&key=")
   .then(res => res.json())
   .then(data => {
     console.log(data);
@@ -21,9 +21,13 @@ fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww
 
       iframeElement.src = youtubeUrl;
       videoEl.appendChild(iframeElement);
+
+      });
+    }
       
-  });
-}
+
+
+
 
 var happyButton = document.querySelector(".happy");
 var videoEl = document.getElementById("video")
@@ -34,7 +38,7 @@ happyButton.addEventListener('click', function(e) {
 
 function stress(){
   var videoEl = document.getElementById("video");
-  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=6ZKYJjU9zLY&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=6ZKYJjU9zLY&key=")
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -70,7 +74,7 @@ function stress(){
   
 function anxious(){
   var videoEl = document.getElementById("video");
-  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=79kpoGF8KWU&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=79kpoGF8KWU&key=")
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -105,7 +109,7 @@ function anxious(){
 
   function Calm(){
     var videoEl = document.getElementById("video");
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=-odmbQd7b2A&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=-odmbQd7b2A&key=")
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -140,7 +144,7 @@ function anxious(){
 
     function Energetic(){
       var videoEl = document.getElementById("video");
-      fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=hF7BkvLJwqg&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+      fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=hF7BkvLJwqg&key=")
         .then(res => res.json())
         .then(data => {
           console.log(data);
@@ -175,7 +179,7 @@ function anxious(){
 
       function Sleepy(){
         var videoEl = document.getElementById("video");
-        fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=rQxMs3v61CI&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+        fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=rQxMs3v61CI&key=")
           .then(res => res.json())
           .then(data => {
             console.log(data);
@@ -211,7 +215,7 @@ function anxious(){
 
         function Focus(){
           var videoEl = document.getElementById("video");
-          fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+          fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=")
             .then(res => res.json())
             .then(data => {
               console.log(data);
@@ -246,7 +250,7 @@ function anxious(){
 
           function Heroic(){
             var videoEl = document.getElementById("video");
-            fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=7C4oraQgylU&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
+            fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=")
               .then(res => res.json())
               .then(data => {
                 console.log(data);
