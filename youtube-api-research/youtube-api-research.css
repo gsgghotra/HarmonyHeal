@@ -4,5 +4,10 @@ margin: 1%;
 
 #video{
   margin: 1%;
-display: flex;
+position: relative;
+}
+
+p{
+  font-size: large;
+  position: relative;
 }
