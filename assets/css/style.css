@@ -5,8 +5,6 @@
 }
 
 
-/* Portfolio cards Start */
-
 :root {
   --main-bg-color: #FFEF9F;
   --main-card-color: #ffdfe3;
@@ -33,8 +31,34 @@ body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   font-family: "catcheye-webfont";
-  background-image: url(../images/Clouds-Above.png)
+  background-image: url(../images/Clouds-Above.png);
+  cursor: url(../images/Cursor.png),pointer;
 }
+
+.Cloud .clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.banner .clouds img {
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+  animation: animate calc(8s * var(--i)) linear infinite;
+}
+@keyframes animate {
+  0%
+  {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 
 .navbar {
   background-color: var(--main-nav-color) !important;
@@ -43,7 +67,7 @@ body {
 button {
 	width: 120px;
 	height: 37px;
-	cursor: pointer;
+	cursor: url(../images/Cursor.png),pointer;
 	border: 0px solid #5b3f69;
 	background: #34283b;
 	transition: 200ms;
@@ -80,7 +104,7 @@ button::after {
 }
 
 button:hover {
-	border: 3px solid #5b3f69;
+	border: 3px solid #ff6ebb;
 }
 
 button:hover span {
@@ -106,6 +130,8 @@ button:focus {
 	outline: none;
 }
 
+/* Portfolio cards Start */
+
 #portfolioCards h2 {
   font-size: 32px;
   margin: auto;
@@ -119,12 +145,32 @@ button:focus {
   flex-direction: column;
   align-items: center;
   text-align: center;
- 
+  cursor: url(../images/Cursor.png),pointer;
+}
+
+#portfolioCards .card {
+  background-color: var(--main-card-color);
+}
+
+
+.card-img, .card-img-top {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.card {
+  border-radius: 50px;
 }
 
 .container-fluid {
   width: 100%;
 }
+
+.cardContainer {
+  margin-bottom: 15px;
+}
+
+
 
 .row {
   display: flex;
@@ -132,10 +178,9 @@ button:focus {
   justify-content: center;
 }
 
-#portfolioCards .card {
-  background-color: var(--main-card-color);
-  border-radius: calc(var(--curve) * 2.9px);
-}
+
+
+
 
 
 /* Portfolio cards End */
@@ -173,12 +218,6 @@ button:focus {
     background-color: ;
 }
 
-.cardContainer {
-  margin-bottom: 15px;
-}
-.card {
-  margin: 0 auto;
-}
 
 @media (max-width: 850px) {
 
