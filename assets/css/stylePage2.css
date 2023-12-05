@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+:root {
+  --main-bg-color: #FFEF9F;
+  --main-card-color: #ffdfe3;
+  --main-text-color: #2E2E3A;
+  --main-nav-color: #ffd2d9;
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+@font-face {
+  font-family: "catcheye-webfont";
+  src: url('../fonts/coolvetica_rg-webfont.woff2') format('woff2'),
+       url('../fonts/coolvetica_rg-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  font-family: "catcheye-webfont";
+  background-image: url(../images/Clouds-Above.png);
+  cursor: url(../images/Cursor.png),pointer;
+}
+
+.Cloud .clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.banner .clouds img {
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+  animation: animate calc(8s * var(--i)) linear infinite;
+}
+@keyframes animate {
+  0%
+  {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+.navbar {
+  background-color: var(--main-nav-color) !important;
+}
+
+button {
+	width: 120px;
+	height: 37px;
+	cursor: url(../images/Cursor.png),pointer;
+	border: 0px solid #5b3f69;
+	background: #34283b;
+	transition: 200ms;
+  border-radius: calc(var(--curve) * 2.9px);
+}
+
+button span {
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 20px;
+	color: #f0ecfc;
+	transition: 500ms;
+}
+
+button::before, button::after {
+	content: '';
+	position: absolute;
+	margin-left: -75px;
+	margin-top: -25px;
+	width: 140px;
+	height: 40px;
+	z-index: -1;
+}
+
+button::before {
+	border: 3px solid #7e5791;
+	transition: 200ms;
+}
+
+button::after {
+	border: 3px solid #b37ccf;
+	transition: 500ms;
+}
+
+button:hover {
+	border: 3px solid #ff6ebb;
+}
+
+button:hover span {
+	letter-spacing: 4px;
+	font-size: 20px;
+}
+
+button:hover::before {
+	width: 150px;
+	height: 50px;
+	margin-left: -80px;
+	margin-top: -30px;
+}
+
+button:hover::after {
+	width: 160px;
+	height: 60px;
+	margin-left: -85px;
+	margin-top: -35px;
+}
+
+button:focus {
+	outline: none;
+}
+
+/* Portfolio cards Start */
+
+#portfolioCards h2 {
+  font-size: 32px;
+  margin: auto;
+  text-align: center;
+  padding: 0px 50px 50px 50px;
+}
+
+#portfolioCards {
+  padding: 50px 50px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: url(../images/Cursor.png),pointer;
+}
+
+#portfolioCards .card {
+  background-color: var(--main-card-color);
+}
+
+
+.card-img, .card-img-top {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.card {
+  border-radius: 50px;
+}
+
+.container-fluid {
+  width: 100%;
+}
+
+.cardContainer {
+  margin-bottom: 15px;
+}
+
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+
+
+
+/* Portfolio cards End */
+
+/* Footer Styles */
+
+.footer {
+  position: flex;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: var(--main-nav-color);
+  margin-top: 50px;
+  padding-top: 10px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-column h4 {
+    color: #fff;
+    
+}
+
+.footer-row {
+    margin-top: 10px;
+    background-color: ;
+}
+
+
+@media (max-width: 850px) {
+
+}
+
+  #navBar2 {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5%;
+  }
+  
+  #navigation2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #navigation2 a {
+    cursor: pointer;
+    text-decoration: none;
+  
+  }
+
+
+<<<<<<< HEAD
+h1 {
+  font-weight: 500;
+  color:rgb(32, 160, 251);
+  text-decoration: inherit;
+} 
+
+h1:hover {
+  color: rgb(86, 64, 251);
+} 
+
+
+@media (max-width: 850px) {
+    h1 {
+        font-size: 40px;
+        padding: 5px; 
+        margin: 5px;
+        
+    }
+}
+
+/* Portfolio cards Start */
+
+
+/* Portfolio cards End */
+
+/* Footer Styles */
+
+  #navBar2 {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5%;
+  }
+  
+  #navigation2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #navigation2 a {
+    cursor: pointer;
+    text-decoration: none;
+  
+  }
+
+
+=======
+>>>>>>> main
