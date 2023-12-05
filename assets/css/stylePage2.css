@@ -1,4 +1,66 @@
-* {
+* 
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Add additional styling as needed */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -129,6 +191,7 @@ button:hover::after {
 button:focus {
 	outline: none;
 }
+*/
 
 /* Portfolio cards Start */
 
@@ -170,18 +233,11 @@ button:focus {
   margin-bottom: 15px;
 }
 
-
-
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
-
-
-
-
 
 /* Portfolio cards End */
 
@@ -243,7 +299,6 @@ button:focus {
   }
 
 
-<<<<<<< HEAD
 h1 {
   font-weight: 500;
   color:rgb(32, 160, 251);
@@ -291,5 +346,3 @@ h1:hover {
   }
 
 
-=======
->>>>>>> main
