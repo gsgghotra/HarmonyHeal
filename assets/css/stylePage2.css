@@ -1,23 +1,40 @@
 * 
 .containerMain {
-  width: 75%;
+  width: 95%;
   margin: auto;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .rowMain {
   display: flex;
-  margin: 20px 20px 20px 20px;
+  margin: 10px 20px 20px 20px;
 }
 
-.column {
+.columnBox {
   flex: 1;
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #ddd;
   text-align: center;
   margin: 30px 30px 30px 30px;
 }
+
+.columnPlayer {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 10px 30px 30px 30px;
+}
+
+.columnQuote {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 30px 30px 30px 30px;
+}
+
 
 {
   box-sizing: border-box;
