@@ -1,6 +1,6 @@
+
 function happy(){
 var videoEl = document.getElementById("video");
-var iframeEl;
 fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww1T4&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
   .then(res => res.json())
   .then(data => {
@@ -12,7 +12,7 @@ fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww
 
       var videoId = data.items[0].id
       console.log(videoId)
-      var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1&rel=0"
+      var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
 
       console.log(youtubeUrl)
       var iframeElement = document.createElement('iframe');
@@ -23,12 +23,25 @@ fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww
       iframeElement.src = youtubeUrl;
       videoEl.appendChild(iframeElement);
 
-        var pauseButton = document.createElement('button');
-        pauseButton.classList.add('pause');
-        pauseButton.textContent = 'Pause Video';
-        videoEl.appendChild(pauseButton);
+      function spacebarPress() {
+        var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+        document.dispatchEvent(event);
+      }
 
-  })}
+      var pauseButton = document.createElement('button');
+      pauseButton.classList.add('pause');
+      pauseButton.textContent = 'Pause/Play Video';
+      videoEl.appendChild(pauseButton);
+pauseButton.addEventListener('click', function() {
+spacebarPress();
+
+
+});
+});
+}
+document.addEventListener('keydown', function(event) {
+console.log(event);
+})
 
 
 var happyButton = document.querySelector(".happy");
@@ -52,7 +65,7 @@ function stress(){
         var videoId = data.items[0].id
         console.log(videoId)
 
-        var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1&controls=0"
+        var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1&controls=0&rel=0"
   
         console.log(youtubeUrl)
         var iframeElement = document.createElement('iframe');
@@ -62,9 +75,26 @@ function stress(){
   
         iframeElement.src = youtubeUrl;
         videoEl.appendChild(iframeElement);
+
+        function spacebarPress() {
+          var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+          document.dispatchEvent(event);
+        }
+  
+        var pauseButton = document.createElement('button');
+        pauseButton.classList.add('pause');
+        pauseButton.textContent = 'Pause/Play Video';
+        videoEl.appendChild(pauseButton);
+  pauseButton.addEventListener('click', function() {
+  spacebarPress();
+  
+  
+  });
+  });
         
-    });
-  }
+        
+    };
+  
   
   var stressButton = document.querySelector(".stress");
   var videoEl = document.getElementById("video")
@@ -88,7 +118,7 @@ function anxious(){
         var videoId = data.items[0].id
         console.log(videoId)
 
-        var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+        var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
   
         console.log(youtubeUrl)
         var iframeElement = document.createElement('iframe');
@@ -99,10 +129,24 @@ function anxious(){
         iframeElement.src = youtubeUrl;
         videoEl.appendChild(iframeElement);
 
-        s
+        function spacebarPress() {
+          var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+          document.dispatchEvent(event);
+        }
+  
+        var pauseButton = document.createElement('button');
+        pauseButton.classList.add('pause');
+        pauseButton.textContent = 'Pause/Play Video';
+        videoEl.appendChild(pauseButton);
+  pauseButton.addEventListener('click', function() {
+  spacebarPress();
+  
+  
+  });
+  });
         
-    });
-  }
+    };
+  
   
   var anxiousButton = document.querySelector(".anxious");
   var videoEl = document.getElementById("video")
@@ -125,7 +169,7 @@ function anxious(){
           var videoId = data.items[0].id
           console.log(videoId)
   
-          var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+          var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
     
           console.log(youtubeUrl)
           var iframeElement = document.createElement('iframe');
@@ -135,10 +179,26 @@ function anxious(){
     
           iframeElement.src = youtubeUrl;
           videoEl.appendChild(iframeElement);
-          
-      });
-    }
+
+          function spacebarPress() {
+            var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+            document.dispatchEvent(event);
+          }
     
+          var pauseButton = document.createElement('button');
+          pauseButton.classList.add('pause');
+          pauseButton.textContent = 'Pause/Play Video';
+          videoEl.appendChild(pauseButton);
+    pauseButton.addEventListener('click', function() {
+    spacebarPress();
+    
+    
+    });
+    });
+          
+      };
+  
+  
     var CalmButton = document.querySelector(".Calm");
     var videoEl = document.getElementById("video")
     CalmButton.addEventListener('click', function(e) {
@@ -160,7 +220,7 @@ function anxious(){
             var videoId = data.items[0].id
             console.log(videoId)
     
-            var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+            var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
       
             console.log(youtubeUrl)
             var iframeElement = document.createElement('iframe');
@@ -170,9 +230,25 @@ function anxious(){
       
             iframeElement.src = youtubeUrl;
             videoEl.appendChild(iframeElement);
+
+            function spacebarPress() {
+              var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+              document.dispatchEvent(event);
+            }
+      
+            var pauseButton = document.createElement('button');
+            pauseButton.classList.add('pause');
+            pauseButton.textContent = 'Pause/Play Video';
+            videoEl.appendChild(pauseButton);
+      pauseButton.addEventListener('click', function() {
+      spacebarPress();
+      
+      
+      });
+      });
             
-        });
-      }
+        };
+      
       
       var EnergeticButton = document.querySelector(".Energetic");
       var videoEl = document.getElementById("video")
@@ -195,7 +271,7 @@ function anxious(){
               var videoId = data.items[0].id
               console.log(videoId)
       
-              var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+              var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
         
               console.log(youtubeUrl)
               var iframeElement = document.createElement('iframe');
@@ -205,9 +281,25 @@ function anxious(){
         
               iframeElement.src = youtubeUrl;
               videoEl.appendChild(iframeElement);
+
+              function spacebarPress() {
+                var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+                document.dispatchEvent(event);
+              }
+        
+              var pauseButton = document.createElement('button');
+              pauseButton.classList.add('pause');
+              pauseButton.textContent = 'Pause/Play Video';
+              videoEl.appendChild(pauseButton);
+        pauseButton.addEventListener('click', function() {
+        spacebarPress();
+        
+        
+        });
+        });
               
-          });
-        }
+          };
+        
         
         var SleepyButton = document.querySelector(".Sleepy");
         var videoEl = document.getElementById("video")
@@ -231,7 +323,7 @@ function anxious(){
                 var videoId = data.items[0].id
                 console.log(videoId)
         
-                var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+                var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
           
                 console.log(youtubeUrl)
                 var iframeElement = document.createElement('iframe');
@@ -241,9 +333,25 @@ function anxious(){
           
                 iframeElement.src = youtubeUrl;
                 videoEl.appendChild(iframeElement);
+
+                function spacebarPress() {
+                  var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+                  document.dispatchEvent(event);
+                }
+          
+                var pauseButton = document.createElement('button');
+                pauseButton.classList.add('pause');
+                pauseButton.textContent = 'Pause/Play Video';
+                videoEl.appendChild(pauseButton);
+          pauseButton.addEventListener('click', function() {
+          spacebarPress();
+          
+          
+          });
+          });
                 
-            });
-          }
+            };
+        
           
           var FocusButton = document.querySelector(".Focus");
           var videoEl = document.getElementById("video")
@@ -266,7 +374,7 @@ function anxious(){
                   var videoId = data.items[0].id
                   console.log(videoId)
           
-                  var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
+                  var youtubeUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&controls=0&rel=0"
             
                   console.log(youtubeUrl)
                   var iframeElement = document.createElement('iframe');
@@ -276,9 +384,25 @@ function anxious(){
             
                   iframeElement.src = youtubeUrl;
                   videoEl.appendChild(iframeElement);
+
+                  function spacebarPress() {
+                    var event = new KeyboardEvent('keydown', { key: ' ', code: 'Space'});
+                    document.dispatchEvent(event);
+                  }
+            
+                  var pauseButton = document.createElement('button');
+                  pauseButton.classList.add('pause');
+                  pauseButton.textContent = 'Pause/Play Video';
+                  videoEl.appendChild(pauseButton);
+            pauseButton.addEventListener('click', function() {
+            spacebarPress();
+            
+            
+            });
+            });
                   
-              });
-            }
+              };
+            
             
             var HeroicButton = document.querySelector(".Heroic");
             var videoEl = document.getElementById("video")
