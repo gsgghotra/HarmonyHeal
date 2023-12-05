@@ -1,6 +1,7 @@
 function happy(){
 var videoEl = document.getElementById("video");
-fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww1T4&key=")
+var iframeEl;
+fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww1T4&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
   .then(res => res.json())
   .then(data => {
     console.log(data);
@@ -11,7 +12,7 @@ fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww
 
       var videoId = data.items[0].id
       console.log(videoId)
-      var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+      var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1&rel=0"
 
       console.log(youtubeUrl)
       var iframeElement = document.createElement('iframe');
@@ -22,11 +23,12 @@ fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=DgUgm2Ww
       iframeElement.src = youtubeUrl;
       videoEl.appendChild(iframeElement);
 
-      });
-    }
-      
+        var pauseButton = document.createElement('button');
+        pauseButton.classList.add('pause');
+        pauseButton.textContent = 'Pause Video';
+        videoEl.appendChild(pauseButton);
 
-
+  })}
 
 
 var happyButton = document.querySelector(".happy");
@@ -38,7 +40,7 @@ happyButton.addEventListener('click', function(e) {
 
 function stress(){
   var videoEl = document.getElementById("video");
-  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=6ZKYJjU9zLY&key=")
+  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=6ZKYJjU9zLY&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -50,7 +52,7 @@ function stress(){
         var videoId = data.items[0].id
         console.log(videoId)
 
-        var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+        var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1&controls=0"
   
         console.log(youtubeUrl)
         var iframeElement = document.createElement('iframe');
@@ -74,7 +76,7 @@ function stress(){
   
 function anxious(){
   var videoEl = document.getElementById("video");
-  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=79kpoGF8KWU&key=")
+  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=79kpoGF8KWU&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -86,7 +88,7 @@ function anxious(){
         var videoId = data.items[0].id
         console.log(videoId)
 
-        var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+        var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
   
         console.log(youtubeUrl)
         var iframeElement = document.createElement('iframe');
@@ -96,6 +98,8 @@ function anxious(){
   
         iframeElement.src = youtubeUrl;
         videoEl.appendChild(iframeElement);
+
+        s
         
     });
   }
@@ -109,7 +113,7 @@ function anxious(){
 
   function Calm(){
     var videoEl = document.getElementById("video");
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=-odmbQd7b2A&key=")
+    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=-odmbQd7b2A&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -121,7 +125,7 @@ function anxious(){
           var videoId = data.items[0].id
           console.log(videoId)
   
-          var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+          var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
     
           console.log(youtubeUrl)
           var iframeElement = document.createElement('iframe');
@@ -144,7 +148,7 @@ function anxious(){
 
     function Energetic(){
       var videoEl = document.getElementById("video");
-      fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=hF7BkvLJwqg&key=")
+      fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=hF7BkvLJwqg&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
         .then(res => res.json())
         .then(data => {
           console.log(data);
@@ -156,7 +160,7 @@ function anxious(){
             var videoId = data.items[0].id
             console.log(videoId)
     
-            var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+            var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
       
             console.log(youtubeUrl)
             var iframeElement = document.createElement('iframe');
@@ -179,7 +183,7 @@ function anxious(){
 
       function Sleepy(){
         var videoEl = document.getElementById("video");
-        fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=rQxMs3v61CI&key=")
+        fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=rQxMs3v61CI&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
           .then(res => res.json())
           .then(data => {
             console.log(data);
@@ -191,7 +195,7 @@ function anxious(){
               var videoId = data.items[0].id
               console.log(videoId)
       
-              var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+              var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
         
               console.log(youtubeUrl)
               var iframeElement = document.createElement('iframe');
@@ -215,7 +219,7 @@ function anxious(){
 
         function Focus(){
           var videoEl = document.getElementById("video");
-          fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=")
+          fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
             .then(res => res.json())
             .then(data => {
               console.log(data);
@@ -227,7 +231,7 @@ function anxious(){
                 var videoId = data.items[0].id
                 console.log(videoId)
         
-                var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+                var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
           
                 console.log(youtubeUrl)
                 var iframeElement = document.createElement('iframe');
@@ -250,7 +254,7 @@ function anxious(){
 
           function Heroic(){
             var videoEl = document.getElementById("video");
-            fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=")
+            fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=BdRoLg1tAkw&key=AIzaSyA-sowA9l04T8uxLu2Shh1Wefl0ha8zego")
               .then(res => res.json())
               .then(data => {
                 console.log(data);
@@ -262,7 +266,7 @@ function anxious(){
                   var videoId = data.items[0].id
                   console.log(videoId)
           
-                  var youtubeUrl = "https://www.youtube.com/embed/" + videoId
+                  var youtubeUrl = "https://www.youtube.com/embed/" + videoId +"?autoplay=1"
             
                   console.log(youtubeUrl)
                   var iframeElement = document.createElement('iframe');
@@ -281,10 +285,4 @@ function anxious(){
             HeroicButton.addEventListener('click', function(e) {
               videoEl.innerHTML = '';
               Heroic();
-            });          
-
-
-
-
-
-
+            });
