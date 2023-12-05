@@ -42,7 +42,11 @@ async function playerControls(EmbedController){
     let mediaPlayerEl = document.querySelector('#mediaPlayer');
     let artVideo = document.getElementById('artVideo');
     let playerToogleBtn = document.querySelector("#playerToogleBtn");
-        
+    
+    //Variable for duration
+    let duration = 0; 
+    let songNumber = 1;
+
     //Click on the play button
     let spotifyPlay = document.querySelector('#spotifyPlay');
     spotifyPlay.addEventListener('click', ()=>{
@@ -64,13 +68,12 @@ async function playerControls(EmbedController){
         }
     })
 
-    //Variable for duration
-    let duration = 0; 
+
     optionSection.addEventListener('click', async(event) => {
         // Only trigger if the element has dataset
         if(event.target.dataset.search){
             // console.log(event.target.dataset.search)
-            let songNumber = 1;
+            
             searchText = event.target.dataset.search;
             let allTracks = await fetchDataManager(searchText);
 
@@ -135,17 +138,31 @@ async function playerControls(EmbedController){
                 // spotifyPlay.innerHTML = "Pause";
             })
 
+                //Timer of the song
+                EmbedController.addListener('playback_update', e => {
+                    document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
+
+                    if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
+                        console.log("Play Next Song")
+                        if(songNumber < allTracks.length - 1){
+                            songNumber += 1;
+                        } else {
+                            songNumber = 0;
+                        }
+
+                        //Convert time into seconds
+                        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+
+                        
+                        title.innerText = allTracks[songNumber].track.name;
+                        EmbedController.loadUri(allTracks[songNumber].track.uri);
+                        EmbedController.play();
+                    }
+                    });
+
         }
     })
 
-    //Timer of the song
-    EmbedController.addListener('playback_update', e => {
-        document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
-
-        if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
-            console.log("Play Next Song")
-        }
-        });
 }
 
 // Then make an api call using token
