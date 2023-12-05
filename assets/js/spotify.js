@@ -42,6 +42,7 @@ async function playerControls(EmbedController){
     let mediaPlayerEl = document.querySelector('#mediaPlayer');
     let artVideo = document.getElementById('artVideo');
     let playerToogleBtn = document.querySelector("#playerToogleBtn");
+    let trackSlider = document.querySelector("#trackSlider");
     
     //Variable for duration
     let duration = 0; 
@@ -79,6 +80,7 @@ async function playerControls(EmbedController){
 
             // Convert music duration from ms to seconds
             duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+            trackSlider.max = duration
 
             // console.log("Song Duration: ", formattedTime)
             EmbedController.loadUri(allTracks[songNumber].track.uri);
@@ -109,6 +111,7 @@ async function playerControls(EmbedController){
                 //Convert time into seconds
                 duration = timeConvertor(allTracks[songNumber].track.duration_ms);
                 console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
+                trackSlider.max = duration
 
                 
                 title.innerText = allTracks[songNumber].track.name;
@@ -128,6 +131,7 @@ async function playerControls(EmbedController){
                 //Format duration from ms into seconds
                 duration = timeConvertor(allTracks[songNumber].track.duration_ms);
                 console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
+                trackSlider.max = duration
 
                 // console.log("Prev Song ", songNumber , "of", allTracks.length);
                 // console.log("Lets play new Track: ", allTracks[songNumber].track.name , allTracks[songNumber]);
@@ -137,10 +141,13 @@ async function playerControls(EmbedController){
                 EmbedController.play();
                 // spotifyPlay.innerHTML = "Pause";
             })
-
+                trackSlider.onchange = ()=>{
+                    EmbedController.seek(trackSlider.value)
+                }
                 //Timer of the song
                 EmbedController.addListener('playback_update', e => {
                     document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
+                    trackSlider.value = parseInt(e.data.position / 1000, 10);
 
                     if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
                         console.log("Play Next Song")
