@@ -17,6 +17,8 @@
   border: 1px solid #ddd;
   text-align: center;
   margin: 30px 30px 30px 30px;
+  box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+
 }
 
 .columnPlayer {
@@ -25,6 +27,7 @@ padding: 120px;
 border: 1px solid #ddd;
 text-align: center;
 margin: 10px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 }
 
 .columnQuote {
@@ -33,6 +36,7 @@ padding: 120px;
 border: 1px solid #ddd;
 text-align: center;
 margin: 30px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 }
 
 
