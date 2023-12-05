@@ -47,8 +47,9 @@ body {
   position: absolute;
   bottom: 0;
   max-width: 100%;
-  animation: animate calc(8s * var(--i)) linear infinite;
+  animation: animate calc(9s * var(--i)) linear infinite;
 }
+
 @keyframes animate {
   0%
   {
@@ -60,9 +61,9 @@ body {
 }
 
 
-.navbar {
-  background-color: var(--main-nav-color) !important;
-}
+
+
+
 
 button {
 	width: 120px;
@@ -148,6 +149,8 @@ button:focus {
   cursor: url(../images/Cursor.png),pointer;
 }
 
+
+
 #portfolioCards .card {
   background-color: var(--main-card-color);
 }
@@ -178,11 +181,6 @@ button:focus {
   justify-content: center;
 }
 
-
-
-
-
-
 /* Portfolio cards End */
 
 /* Footer Styles */
@@ -197,25 +195,10 @@ button:focus {
   padding-top: 10px;
 }
 
-.footer-columns {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
 .footer-column {
     flex: 1;
     margin-right: 20px;
-}
-
-.footer-column h4 {
-    color: #fff;
-    
-}
-
-.footer-row {
-    margin-top: 10px;
-    background-color: ;
+    text-align: center;
 }
 
 
@@ -243,16 +226,13 @@ button:focus {
   }
 
 
-<<<<<<< HEAD
 h1 {
   font-weight: 500;
-  color:rgb(32, 160, 251);
+  font-size: 80px;
+  color:rgb(0, 0, 0);
   text-decoration: inherit;
 } 
 
-h1:hover {
-  color: rgb(86, 64, 251);
-} 
 
 
 @media (max-width: 850px) {
@@ -291,5 +271,3 @@ h1:hover {
   }
 
 
-=======
->>>>>>> main
