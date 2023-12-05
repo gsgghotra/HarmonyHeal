@@ -34,19 +34,36 @@ window.onSpotifyIframeApiReady = async (IFrameAPI) => {
 
 //Manage user controls
 async function playerControls(EmbedController){
-    //Click on the play button
-    let spotifyPlay = document.querySelector('#spotifyPlay');
-    spotifyPlay.addEventListener('click', ()=>{
-        EmbedController.togglePlay();        
-    })
+
 
     //Lets Click on Parent div of option
     let optionSection = document.querySelector('#optionSection');
     let title = document.querySelector("#songTitle");
     let mediaPlayerEl = document.querySelector('#mediaPlayer');
     let artVideo = document.getElementById('artVideo');
+    let playerToogleBtn = document.querySelector("#playerToogleBtn");
         
-    
+    //Click on the play button
+    let spotifyPlay = document.querySelector('#spotifyPlay');
+    spotifyPlay.addEventListener('click', ()=>{
+
+        //Check if the HTML element has pause (sync with button)
+        if(playerToogleBtn.classList.contains("fa-pause")){
+            //Pause here
+            EmbedController.pause();
+            playerToogleBtn.classList.remove("fa-pause");
+            playerToogleBtn.classList.add("fa-play");
+            artVideo.pause();
+
+        } else {
+            //Play here
+            EmbedController.togglePlay();
+            playerToogleBtn.classList.add("fa-pause")
+            playerToogleBtn.classList.remove("fa-play")
+            artVideo.play();
+        }
+    })
+
     //Variable for duration
     let duration = 0; 
     optionSection.addEventListener('click', async(event) => {
@@ -70,6 +87,10 @@ async function playerControls(EmbedController){
             EmbedController.play();
             //Play the art Video background
             artVideo.play();
+
+            // Toggle Play Pause icon on the player 
+            playerToogleBtn.classList.remove("fa-play");
+            playerToogleBtn.classList.add("fa-pause");
             mediaPlayerEl.classList.remove("hidden");
             // spotifyPlay.innerHTML = "Pause";
 
@@ -120,6 +141,10 @@ async function playerControls(EmbedController){
     //Timer of the song
     EmbedController.addListener('playback_update', e => {
         document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
+
+        if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
+            console.log("Play Next Song")
+        }
         });
 }
 
@@ -223,6 +248,11 @@ function timeConvertor(milliseconds){
 function trackTime(timeLeft){
     //Convert Seconds into minutes
     const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft - minutes * 60;
-    return minutes+":"+seconds
+    const seconds = (timeLeft - minutes * 60);
+
+    //Convert (9 into 09)
+    function n(n){
+        return n > 9 ? "" + n: "0" + n;
+    }
+    return minutes+":"+n(seconds)
 }
