@@ -187,6 +187,7 @@ button:focus {
 
 
 
+
 /* Portfolio cards End */
 
 /* Footer Styles */
@@ -225,6 +226,14 @@ button:focus {
 
 @media (max-width: 850px) {
 
+}
+
+.navbar{
+ width: 100%;
+}
+
+#mainNav img{
+ 
 }
 
   #navBar2 {
