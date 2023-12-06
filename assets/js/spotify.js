@@ -1,8 +1,12 @@
 // Get access token using client Id and secret
     //https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow
+const clientTag = "1485320a3c124602a";
+const clientPass = "57e56b5fac7bd4f"
+const client_s_token = "92fa55f6bbed40c"
+const client_s_key = "38c85f572aeb0fa99"
+const client_id = clientTag + clientPass;
+const client_secret = client_s_token + client_s_key;
 
-var client_id = '';
-var client_secret = '';
 //Get token function - returns access_token
 async function getToken() {
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -18,6 +22,10 @@ async function getToken() {
     return await response.json();
 }
 
+// Define onSpotifyIframeApiReady 
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    
+};
 // Use iframe provided by Spotify to play the track
 window.onSpotifyIframeApiReady = async (IFrameAPI) => {
     const element = document.getElementById('embed-iframe');
@@ -215,7 +223,7 @@ async function getTrackInfo(access_token) {
 
 //This function searches albums
 async function getSearchResult(token, searchText) {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Cplaylist&limit=1`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Cplaylist&limit=6`, {
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + token },
     });
@@ -241,14 +249,16 @@ async function findTrack(data){
     let imageEl = document.querySelector("#searchResults");
     imageEl.innerHTML = ""
 
+    //Update the current music to the player
+    let songArt = document.querySelector("#songArt");
+    let playlistTitle = document.querySelector("#playlistTitle");
+    songArt.removeAttribute("src");
+    songArt.setAttribute("src", data.playlists.items[0].images[0].url);
+    playlistTitle.innerText = data.playlists.items[0].name;
+
     //If more than 1 limit used during search
     for(let i = 0; i < totalItems; i++){
-        // console.log(data.playlists.items[i].name)
-        let songArt = document.querySelector("#songArt");
-        let playlistTitle = document.querySelector("#playlistTitle");
-        songArt.removeAttribute("src");
-        songArt.setAttribute("src", data.playlists.items[i].images[0].url);
-        playlistTitle.innerText = data.playlists.items[0].name
+        console.log("Similar playlists: ",data.playlists.items[i].name)
         // console.log("Playlist Name" ,data.playlists.items[0].name)
     }
 
@@ -257,7 +267,7 @@ async function findTrack(data){
 }
 
 async function manageTrack(data){
-    console.log("List of Tracks: ", data)
+    // console.log("List of Tracks: ", data)
     if (data.length){
         return data;
     }
@@ -266,12 +276,11 @@ async function manageTrack(data){
 // Function to convert ms into seconds
 function timeConvertor(milliseconds){
     seconds = Math.floor(milliseconds / 1000);
-    
-
-    console.log(seconds," Seconds"); // 21:12:09
+    // console.log(seconds," Seconds"); // 21:12:09
     return seconds;
 }
 
+// Length of the song updater 
 function trackTime(timeLeft){
     //Convert Seconds into minutes
     const minutes = Math.floor(timeLeft / 60);
