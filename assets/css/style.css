@@ -295,11 +295,18 @@ h1:hover {
   margin: auto;
   padding-top: 5%;
   padding-bottom: 5%;
+  margin-top: 5%;
 }
 
 .rowMain {
   display: flex;
   margin: 10px 20px 20px 20px;
+}
+
+.rowMain .quote {
+  display: flex;
+  margin: 10px 20px 20px 20px;
+  margin-top: 5%;
 }
 
 .columnBox {
@@ -328,6 +335,18 @@ border: 1px solid #ddd;
 text-align: center;
 margin: 30px 30px 30px 30px;
 box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* quote styling */
+h5{
+  margin-top: 1%;
+  font-size: ;
+  font-weight: bold;
+}
+
+h6{
+  font-style: italic;
+  font-size: ;
 }
 
 
