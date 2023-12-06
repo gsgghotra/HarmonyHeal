@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/logo.png">
-
+    <!-- Player CSS -->
+    <link rel="stylesheet" href="assets/css/playerStyle.css" />
+    <!-- SPOTIFY script tags -->
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+    <script>
+        // Define onSpotifyIframeApiReady in the global scope
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        
+        };
+    </script>
+    <!-- Fonts Icons-->
+    <script src="https://kit.fontawesome.com/088f2e4985.js" crossorigin="anonymous"></script>
     <title>HarmonyHeal</title>
 </head>
 <body>
@@ -179,8 +190,52 @@
           </div>
         </div>
         <div class="rowMain">
-          <div class="columnPlayer"><h2 class="h2box">Happy Music Player</h2>
-            Player</div>
+          <div class="columnPlayer">
+            <section id="playlists">
+              <div id="mediaPlayer" class="visible">
+                  <div id="wrap_video">
+                      <div id="video_box">
+                          <div id="video_overlays">
+                              <img src="./assets/images/artholder.jpg" id="songArt" class="artOverlay">
+                          </div>
+                          <div>
+                              <video id="artVideo" loop>
+                                  <source src="assets/video/peachTheme.mp4"  type="video/mp4">
+                                  Your browser does not support the video tag.
+                              </video>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- <img src="assets/images/Sleep.png" id="songArt" alt="Music Art"> -->
+                  <h4 class="musicTitle" id="songTitle"> Song Title</h4>
+                  <p class="playlistTitle" id="playlistTitle">Playlist</p>
+                  <span class="currentTimer" id="currentTimer">0:00</span>
+                  <span class="timer" id="timer">0:00</span>
+                  <input type="range" id="trackSlider"/>
+                  
+      
+                  <ul class="controls">
+                      <li>
+                          <a href="javascript:void(0);" id="spotifyPrev">
+                              <span class="fa-solid fa-angle-left fa-2xl playericon"></span>
+                          </a>
+                      </li>
+      
+                      <li >
+                          <a href="javascript:void(0);" id="spotifyPlay">
+                              <span id="playerToogleBtn" class="fa-solid fa-play fa-2xl playericon"></span>
+                          </a>
+                      </li>
+      
+                      <li>
+                          <a href="javascript:void(0);" id="spotifyNext">
+                              <span class="fa-solid fa-angle-right fa-2xl playericon"></span>
+                      </a>
+                      </li>
+                  </ul>
+              </div>
+            </section>
+          </div>
           <div class="columnBox">
             <h2 class="h2box">Fun Facts</h2>
             The shadows are just like the highlights, but we're going in the opposite direction. Let that brush dance around there and play. Isn't that fantastic that you can create an almighty tree that fast? Just beat the devil out of it. Mix your color marbly don't mix it dead.
@@ -204,25 +259,23 @@
 <!-- Cards Element end -->
   
 <!-- Footer Nav Start -->
-
-      <footer class="footer">
-       
-        <div class="footer-columns">
-            <!-- Column 1 -->
-            <div class="footer-column">
-              <h2>Music is a Healing Tool For Life</h2>
-            </div>
+<footer class="footer">
+    
+    <div class="footer-columns">
+        <!-- Column 1 -->
+        <div class="footer-column">
+          <h2>Music is a Healing Tool For Life</h2>
         </div>
-    </footer>
-
-
-
+    </div>
 </footer>
-
   <!-- Footer Nav End -->
 
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-GLhlTQ8iK9tTGGn8yoJ8tT+uaP5GUdhvI9zPLDcfPNIa9dAAKQjQpdE9a5cy5bp" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
- <script src="/assets/quote-api-research/quote.js"></script>
+
+  <!-- A div used for spotify iFrame -->
+<div id="embed-iframe"></div> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="/assets/quote-api-research/quote.js"></script>
+<!-- Spotify script -->
+<script src="assets/js/spotify.js"> </script>
 </body>
 </html>

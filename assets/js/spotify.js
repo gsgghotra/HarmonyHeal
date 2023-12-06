@@ -246,8 +246,8 @@ async function findTrack(data){
     //List of tracks
     console.log("First album from search: ", data.playlists.items);
     let totalItems = data.playlists.items.length
-    let imageEl = document.querySelector("#searchResults");
-    imageEl.innerHTML = ""
+    // let imageEl = document.querySelector("#searchResults");
+    // imageEl.innerHTML = ""
 
     //Update the current music to the player
     let songArt = document.querySelector("#songArt");
