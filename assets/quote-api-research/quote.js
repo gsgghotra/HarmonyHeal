@@ -1,3 +1,5 @@
+console.log("helloworld")
+
 var quoteEl = document.getElementById("quote")
 var h3El = document.createElement('h3');
 var h4El = document.createElement('h4');
