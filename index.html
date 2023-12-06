@@ -39,24 +39,25 @@
 <section id="portfolioCards">
   <h1> HarmonyHeal</h1>
     <h2>How would you like to feel?</h2>
+    <div id="optionSection">
   <div class="container-fluid">
     <div class="row">
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div  class="cardContainer col-lg-3 col-md-3 col-sm-12" >
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/HappySun.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Happy </h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option1" data-search="happy-background-instruments" data-quote="happiness"><span>Play</span></button>
 
           </div>
         </div>
       </div>
       <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" id="option2" data-search="Chinese Drums" data-quote="courage">
           <img src="./assets/images/Stress.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -67,9 +68,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option3" data-search="Golden Hour Music"data-quote="imagination">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Anxiety.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -80,9 +81,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option4" data-search="sleep-background-instruments" data-quote="dreams">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Calm.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -93,9 +94,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option5" data-search="stress-background-instruments" data-quote="hope">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Energetic.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -106,9 +107,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option6" data-search="Motivation-background-instruments" data-quote="amazing">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Sleep.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -119,9 +120,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option7" data-search="stress-background-instruments" data-quote="hope">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Focus.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -132,9 +133,9 @@
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option8" data-search="Motivation-background-instruments" data-quote="amazing">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Love.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
@@ -169,5 +170,6 @@
 
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-GLhlTQ8iK9tTGGn8yoJ8tT+uaP5GUdhvI9zPLDcfPNIa9dAAKQjQpdE9a5cy5bp" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+ <script src="/assets/quote-api-research/quote.js"></script>
 </body>
 </html>
