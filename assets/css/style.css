@@ -243,7 +243,6 @@ button:focus {
   }
 
 
-<<<<<<< HEAD
 h1 {
   font-weight: 500;
   color:rgb(32, 160, 251);
@@ -290,6 +289,45 @@ h1:hover {
   
   }
 
+/* player section styling */
+.containerMain {
+  width: 95%;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 
-=======
->>>>>>> main
+.rowMain {
+  display: flex;
+  margin: 10px 20px 20px 20px;
+}
+
+.columnBox {
+  flex: 1;
+  padding: 50px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 30px 30px 30px 30px;
+  box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+
+}
+
+.columnPlayer {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 10px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+}
+
+.columnQuote {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 30px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+}
+
+

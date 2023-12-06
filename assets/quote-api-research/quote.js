@@ -7,7 +7,8 @@ var h4El = document.createElement('h4');
 
 let optionSection = document.querySelector('#optionSection');
 optionSection.addEventListener('click', async(event) => {
-  h3El.innerHTML = '';
+  if(event.target.dataset.quote){
+    h3El.innerHTML = '';
 quoteCat = event.target.dataset.quote;
 console.log(quoteCat)
 fetch('https://api.api-ninjas.com/v1/quotes?category=' + quoteCat, {
@@ -28,6 +29,9 @@ fetch('https://api.api-ninjas.com/v1/quotes?category=' + quoteCat, {
         quoteEl.appendChild(h4El);
 
     });
+  }
+  
+
 
 })
 
