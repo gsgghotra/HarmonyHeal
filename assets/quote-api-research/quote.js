@@ -9,6 +9,7 @@ let optionSection = document.querySelector('#optionSection');
 optionSection.addEventListener('click', async(event) => {
   if(event.target.dataset.quote){
     h5El.innerHTML = '';
+    h6El.innerHTML = '';
 quoteCat = event.target.dataset.quote;
 console.log(quoteCat)
 fetch('https://api.api-ninjas.com/v1/quotes?category=' + quoteCat, {
