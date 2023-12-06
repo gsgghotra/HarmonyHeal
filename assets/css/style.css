@@ -47,6 +47,8 @@ body {
   bottom: 0;
   max-width: 100%;
   animation: animate calc(8s * var(--i)) linear infinite;
+  z-index: -1
+;
 }
 @keyframes animate {
   0%
@@ -173,18 +175,11 @@ button:focus {
   margin-bottom: 15px;
 }
 
-
-
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
-
-
-
-
 
 /* Portfolio cards End */
 
@@ -192,6 +187,9 @@ button:focus {
 
 .footer {
   position: flex;
+  display: grid;
+  justify-content: space-around;
+  align-content: center;
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -200,6 +198,7 @@ button:focus {
   padding-top: 10px;
 }
 
+/* 
 .footer-columns {
     display: flex;
     justify-content: space-between;
@@ -221,9 +220,18 @@ button:focus {
     background-color: ;
 }
 
+*/ 
 
 @media (max-width: 850px) {
 
+}
+
+.navbar{
+ width: 100%;
+}
+
+#mainNav img{
+ 
 }
 
   #navBar2 {
