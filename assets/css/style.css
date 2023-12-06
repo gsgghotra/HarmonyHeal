@@ -26,8 +26,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/
-
 body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
@@ -48,6 +46,8 @@ body {
   bottom: 0;
   max-width: 100%;
   animation: animate calc(8s * var(--i)) linear infinite;
+  z-index: -1
+;
 }
 @keyframes animate {
   0%
@@ -223,6 +223,14 @@ button:focus {
 
 @media (max-width: 850px) {
 
+}
+
+.navbar{
+ width: 100%;
+}
+
+#mainNav img{
+ 
 }
 
   #navBar2 {
