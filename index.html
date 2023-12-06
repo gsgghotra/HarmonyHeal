@@ -15,10 +15,29 @@
 
     <!-- Navigation Code Start -->
 
-  <nav>
-    <di class="title">
-      <img src="./assets/logo/HarmonyHealLogo - 2.png">
-  </nav>
+      <section id="mainNav">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <img src="./assets/logo/HarmonyHealLogo - 2.png" href="./index.html">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./aboutus.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="team.html">Team</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          </section>
 
 <!-- Navigation Code End -->
 
@@ -39,111 +58,146 @@
 <section id="portfolioCards">
   <h1> HarmonyHeal</h1>
     <h2>How would you like to feel?</h2>
+    <div id="optionSection">
   <div class="container-fluid">
     <div class="row">
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div  class="cardContainer col-lg-3 col-md-3 col-sm-12" >
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/HappySun.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Happy </h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option1" data-search="happy-background-instruments" data-quote="happiness"><span>Play</span></button>
 
           </div>
         </div>
       </div>
       <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" id="option2" data-search="Chinese Drums" data-quote="courage">
           <img src="./assets/images/Stress.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel less Stress</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" div id="option2" data-search="Chinese Drums" data-quote="courage"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" >
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Anxiety.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel less Anxious</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option3" data-search="Golden Hour Music"data-quote="imagination"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option4" data-search="sleep-background-instruments" data-quote="dreams">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Calm.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Calm</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option4" data-search="sleep-background-instruments" data-quote="dreams"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option5" data-search="stress-background-instruments" data-quote="hope">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Energetic.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Energetic</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option5" data-search="stress-background-instruments" data-quote="hope"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option6" data-search="Motivation-background-instruments" data-quote="amazing">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Sleep.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Sleepy</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option6" data-search="Motivation-background-instruments" data-quote="amazing"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option7" data-search="stress-background-instruments" data-quote="hope">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Focus.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to Focus</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option7" data-search="Motivation-background-instruments" data-quote="amazing"><span>Play</span></button>
 
           </div>
         </div>
       </div>
-      <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+      <div class="cardContainer col-lg-3 col-md-3 col-sm-12" id="option8" data-search="Motivation-background-instruments" data-quote="amazing">
         <a href="#" class="card-link"></a>
-        <div class="card">
+        <div class="card" >
           <img src="./assets/images/Love.png" class="card-img-top" alt="water and surfing image">
           <div class="card-body">
 
             <h5 class="card-title">I want to feel Heroic</h5>
             <p class="card-text">Please click below for a recommended playlist.</p>
-            <button class="noselect"><span>Play</span></button>
+            <button class="noselect" id="option8" data-search="Motivation-background-instruments" data-quote="amazing"><span>Play</span></button>
 
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <section class="player" id="player">
+
+  
+      <div class="containerMain">
+
+        <div class="rowMain quote">
+          <div class="columnBox" id="quote"><h2 class="h2box" >Daily Quotes</h2>
+          
+          </div>
+        </div>
+        <div class="rowMain">
+          <div class="columnPlayer"><h2 class="h2box">Happy Music Player</h2>
+            Player</div>
+          <div class="columnBox">
+            <h2 class="h2box">Fun Facts</h2>
+            The shadows are just like the highlights, but we're going in the opposite direction. Let that brush dance around there and play. Isn't that fantastic that you can create an almighty tree that fast? Just beat the devil out of it. Mix your color marbly don't mix it dead.
+    
+            It's a super day, so why not make a beautiful sky? You can bend rivers. But when I get home, the only thing I have power over is the garbage. Trees get lonely too, so we'll give him a little friend. Very easy to work these to death. With practice comes confidence.
+            
+            Get away from those little Christmas tree things we used to make in school. You can do anything your heart can imagine. A little happy sunlight shining through there. We'll put some happy little leaves here and there.</div>
+        </div>
+        <div class="rowMain">
+          <div class="columnQuote"><h2 class="h2box">Happy Quote</h2>
+            Quote
+          </div>
+          <div class="columnBox">
+            <h2 class="h2box">Fun Facts</h2>
+            We have a fantastic little sky! The secret to doing anything is believing that you can do it. Anything that you believe you can do strong enough, you can do. Anything. As long as you believe. It's a very cold picture, I may have to go get my coat. It’s about to freeze me to death. Without washing the brush, I'm gonna go right into some Van Dyke Brown, some Burnt Umber, and a little bit of Sap Green. Talk to trees, look at the birds. Whatever it takes.</div>
+        </div>
+        
       </div>
     </section>
 
@@ -169,5 +223,6 @@
 
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-GLhlTQ8iK9tTGGn8yoJ8tT+uaP5GUdhvI9zPLDcfPNIa9dAAKQjQpdE9a5cy5bp" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+ <script src="/assets/quote-api-research/quote.js"></script>
 </body>
 </html>

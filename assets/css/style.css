@@ -26,13 +26,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/
 
 body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   font-family: "catcheye-webfont";
   background-image: url(../images/Clouds-Above.png);
-  cursor: url(../images/Cursor.png),pointer;
 }
 
 .Cloud .clouds {
@@ -59,7 +59,6 @@ body {
   }
 }
 
-
 nav {
   background-color: var(--main-nav-color) !important;
 }
@@ -67,7 +66,6 @@ nav {
 button {
 	width: 120px;
 	height: 37px;
-	cursor: url(../images/Cursor.png),pointer;
 	border: 0px solid #5b3f69;
 	background: #34283b;
 	transition: 200ms;
@@ -90,26 +88,30 @@ button::before, button::after {
 	margin-top: -25px;
 	width: 140px;
 	height: 40px;
-	z-index: -1;
+	z-index: -3;
 }
 
 button::before {
 	border: 3px solid #7e5791;
 	transition: 200ms;
+  z-index: ;
 }
 
 button::after {
 	border: 3px solid #b37ccf;
 	transition: 500ms;
+  z-index: ;
 }
 
 button:hover {
 	border: 3px solid #ff6ebb;
+  z-index: ;
 }
 
 button:hover span {
 	letter-spacing: 4px;
 	font-size: 20px;
+  z-index: ;
 }
 
 button:hover::before {
@@ -117,6 +119,7 @@ button:hover::before {
 	height: 50px;
 	margin-left: -80px;
 	margin-top: -30px;
+  z-index: ;
 }
 
 button:hover::after {
@@ -124,6 +127,8 @@ button:hover::after {
 	height: 60px;
 	margin-left: -85px;
 	margin-top: -35px;
+  z-index: ;
+  
 }
 
 button:focus {
@@ -145,7 +150,6 @@ button:focus {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  cursor: url(../images/Cursor.png),pointer;
 }
 
 #portfolioCards .card {
@@ -237,16 +241,14 @@ button:focus {
   }
   
   #navigation2 a {
-    cursor: pointer;
     text-decoration: none;
   
   }
 
 
-<<<<<<< HEAD
 h1 {
   font-weight: 500;
-  color:rgb(32, 160, 251);
+  color:var(--main-text-color)
   text-decoration: inherit;
 } 
 
@@ -285,11 +287,68 @@ h1:hover {
   }
   
   #navigation2 a {
-    cursor: pointer;
     text-decoration: none;
   
   }
 
+/* player section styling */
+.containerMain {
+  width: 95%;
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 5%;
+}
 
-=======
->>>>>>> main
+.rowMain {
+  display: flex;
+  margin: 10px 20px 20px 20px;
+}
+
+.rowMain .quote {
+  display: flex;
+  margin: 10px 20px 20px 20px;
+  margin-top: 5%;
+}
+
+.columnBox {
+  flex: 1;
+  padding: 50px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 30px 30px 30px 30px;
+  box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+
+}
+
+.columnPlayer {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 10px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+}
+
+.columnQuote {
+float: left;
+padding: 120px;
+border: 1px solid #ddd;
+text-align: center;
+margin: 30px 30px 30px 30px;
+box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* quote styling */
+h5{
+  margin-top: 1%;
+  font-size: ;
+  font-weight: bold;
+}
+
+h6{
+  font-style: italic;
+  font-size: ;
+}
+
+
