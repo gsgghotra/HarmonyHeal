@@ -197,6 +197,7 @@ button:focus {
   background-color: var(--main-nav-color);
   margin-top: 50px;
   padding-top: 10px;
+  z-index: 100;
 }
 
 /* 
@@ -313,15 +314,17 @@ h1:hover {
   padding-bottom: 15px;
   margin-top: 10px;
 }
-
+.containerPlayer{
+  width: 80% !important;
+}
 .rowMain {
   display: grid;
   margin: 10px 20px 20px 20px;
 }
 
 .quote {
-  margin: 10px 20px 20px 20px;
-  border-radius: 15px;
+  width: 80%;
+  margin: 30px auto;
   background: linear-gradient(to right, rgba(255, 210, 217, 0.9), rgba(255, 255, 255, 0.5));
   display: grid;
   padding: 50px;
@@ -329,6 +332,7 @@ h1:hover {
   justify-content: center;
   border: 1px solid gray;
   text-align: center;
+  border-radius: 15px;
 }
 
 .columnBox {
