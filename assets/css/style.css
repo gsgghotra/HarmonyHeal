@@ -43,7 +43,7 @@ body {
   overflow: hidden;
 }
 .banner .clouds img {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   max-width: 100%;
   animation: animate calc(8s * var(--i)) linear infinite;
