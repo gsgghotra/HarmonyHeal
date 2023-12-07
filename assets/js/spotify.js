@@ -182,6 +182,36 @@ async function playerControls(EmbedController){
         // spotifyPlay.innerHTML = "Pause";
     })
 
+    // Similar Playlists Event listener
+    let similarPlaylists = document.querySelector('#similarPlaylists');
+    similarPlaylists.addEventListener('click', async(event) => {
+        console.log("CAN WE PLAY" , event);
+        let newPlaylist = await getPlaylistInfo(event.target.id)
+        console.log("DID I WORK? ", newPlaylist)
+        allTracks = newPlaylist.tracks.items;
+
+        // Convert music duration from ms to seconds
+        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+        trackSlider.max = duration
+
+        songNumber = 1
+        // console.log("Song Duration: ", formattedTime)
+        EmbedController.loadUri(allTracks[songNumber].track.uri);
+
+        //Update Song Art
+        let songArt = document.querySelector("#songArt");
+        console.log(allTracks[1].track.album.images[0].url)
+        songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
+
+        // Update Song Title 
+        title.innerText = allTracks[songNumber].track.name
+
+        //Play the track
+        EmbedController.play();
+        //Play the art Video background
+        artVideo.play();
+    })
+
 }
 
 // Then make an api call using token
@@ -299,6 +329,7 @@ async function findTrack(data){
         frameVinylImg.classList.add('albumFrame')
 
         let cardBtn = document.createElement("button");
+        cardBtn.setAttribute("id" , data.playlists.items[i].href);
         cardBtn.innerText="Play"
 
 
