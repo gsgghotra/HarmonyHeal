@@ -1,8 +1,12 @@
 // Get access token using client Id and secret
     //https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow
+const clientTag = "1485320a3c124602a";
+const clientPass = "57e56b5fac7bd4f"
+const client_s_token = "92fa55f6bbed40c"
+const client_s_key = "38c85f572aeb0fa99"
+const client_id = clientTag + clientPass;
+const client_secret = client_s_token + client_s_key;
 
-var client_id = '';
-var client_secret = '';
 //Get token function - returns access_token
 async function getToken() {
     const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -18,12 +22,16 @@ async function getToken() {
     return await response.json();
 }
 
+// Define onSpotifyIframeApiReady 
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    
+};
 // Use iframe provided by Spotify to play the track
 window.onSpotifyIframeApiReady = async (IFrameAPI) => {
     const element = document.getElementById('embed-iframe');
     const options = {
         // Use the provided URI or a default one
-        uri:  "spotify:track:6ygiy70ujkNOYXM1tQuMNe"  
+        uri:  "spotify:track:6gx1y86TaoNZPTXImnw1fX"  
     };
 
     const callback = (EmbedController) => {
@@ -34,80 +42,176 @@ window.onSpotifyIframeApiReady = async (IFrameAPI) => {
 
 //Manage user controls
 async function playerControls(EmbedController){
-    //Click on the play button
-    let spotifyPlay = document.querySelector('#spotifyPlay');
-    spotifyPlay.addEventListener('click', ()=>{
-        if (spotifyPlay.innerHTML === "Play") {
-            spotifyPlay.innerHTML = "Pause";
-            EmbedController.togglePlay();
-        } else {
-            spotifyPlay.innerHTML = "Play";
-            EmbedController.togglePlay();
-        }
-        
-    })
-
-
-
     //Lets Click on Parent div of option
     let optionSection = document.querySelector('#optionSection');
     let title = document.querySelector("#songTitle");
-    let mediaPlayerEl = document.querySelector('#mediaPlayer')
+    let mediaPlayerEl = document.querySelector('#mediaPlayer');
+    let artVideo = document.getElementById('artVideo');
+    let playerToogleBtn = document.querySelector("#playerToogleBtn");
+    let trackSlider = document.querySelector("#trackSlider");
+    
+    //Variable for duration
+    let duration = 0; 
+    let songNumber = 1;
+
+    //Tracks Holder
+    let allTracks;
+
+    //Click on the play button
+    let spotifyPlay = document.querySelector('#spotifyPlay');
+    let nextBtn = document.querySelector("#spotifyNext");
+    let prevBtn = document.querySelector("#spotifyPrev");
+
     optionSection.addEventListener('click', async(event) => {
+        //console.log(event)
         // Only trigger if the element has dataset
         if(event.target.dataset.search){
             // console.log(event.target.dataset.search)
-            let songNumber = 1;
+            
             searchText = event.target.dataset.search;
-            let allTracks = await fetchDataManager(searchText);
+            allTracks = await fetchDataManager(searchText);
 
-            console.log("Lets play new Track: ", allTracks[songNumber].track.uri)
+            // Convert music duration from ms to seconds
+            duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+            trackSlider.max = duration
+
+            // console.log("Song Duration: ", formattedTime)
             EmbedController.loadUri(allTracks[songNumber].track.uri);
+
+            // Update Song Title 
+            title.innerText = allTracks[songNumber].track.name
+
+            //Play the track
             EmbedController.play();
+            //Play the art Video background
+            artVideo.play();
+
+            // Toggle Play Pause icon on the player 
+            playerToogleBtn.classList.remove("fa-play");
+            playerToogleBtn.classList.add("fa-pause");
             mediaPlayerEl.classList.remove("hidden");
-            spotifyPlay.innerHTML = "Pause";
+            // spotifyPlay.innerHTML = "Pause";
 
-            //If Clicked Next
-            let nextBtn = document.querySelector("#spotifyNext");
-            nextBtn.addEventListener('click', (event)=>{
-                if(songNumber < allTracks.length - 1){
-                    songNumber += 1;
-                } else {
-                    songNumber = 0;
+                trackSlider.onchange = ()=>{
+                    EmbedController.seek(trackSlider.value)
                 }
-                console.log("Next Song ", songNumber , "of", allTracks.length - 1);
-                console.log("Lets play new Track: ", allTracks[songNumber].track.name);
-                //Update title of next song
-                title.innerText = allTracks[songNumber].track.name;
-                EmbedController.loadUri(allTracks[songNumber].track.uri);
-                EmbedController.play();
-                spotifyPlay.innerHTML = "Pause";
-            })
+                //Timer of the song
+                EmbedController.addListener('playback_update', e => {
+                    document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
+                    document.getElementById('currentTimer').innerText = trackTime(timeConvertor(e.data.position));
+                    trackSlider.value = parseInt(e.data.position / 1000, 10);
 
-                        //If Clicked Next
-            let prevBtn = document.querySelector("#spotifyPrev");
-            prevBtn.addEventListener('click', (event)=>{
-                if(songNumber == 0){
-                    songNumber = allTracks.length - 1;
-                } else {
-                    songNumber -= 1;
-                }
-                console.log("Prev Song ", songNumber , "of", allTracks.length);
-                console.log("Lets play new Track: ", allTracks[songNumber].track.name , allTracks[songNumber]);
-                //Update title of next song
-                title.innerText = allTracks[songNumber].track.name;
-                EmbedController.loadUri(allTracks[songNumber].track.uri);
-                EmbedController.play();
-                spotifyPlay.innerHTML = "Pause";
-            })
+                    if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
+                        console.log("Play Next Song")
+                        if(songNumber < allTracks.length - 1){
+                            songNumber += 1;
+                        } else {
+                            songNumber = 0;
+                        }
+
+                        //Convert time into seconds
+                        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+
+                        
+                        title.innerText = allTracks[songNumber].track.name;
+                        EmbedController.loadUri(allTracks[songNumber].track.uri);
+                        EmbedController.play();
+                    }
+                    });
 
         }
     })
 
-    //Timer of the song
-    EmbedController.addListener('playback_update', e => {
-        document.getElementById('timer').innerText = `${parseInt(e.data.position / 1000, 10)} s`;
-        });
+    spotifyPlay.addEventListener('click', ()=>{
+        //Check if the HTML element has pause (sync with button)
+        if(playerToogleBtn.classList.contains("fa-pause")){
+            //Pause here
+            EmbedController.pause();
+            playerToogleBtn.classList.remove("fa-pause");
+            playerToogleBtn.classList.add("fa-play");
+            artVideo.pause();
+
+        } else {
+            //Play here
+            EmbedController.togglePlay();
+            playerToogleBtn.classList.add("fa-pause")
+            playerToogleBtn.classList.remove("fa-play")
+            artVideo.play();
+        }
+    })
+
+    //If Clicked Next
+    nextBtn.addEventListener('click', (event)=>{
+        console.log("PLAY")
+        if(songNumber < allTracks.length - 1){
+            songNumber += 1;
+        } else {
+            songNumber = 0;
+        }
+
+        //Convert time into seconds
+        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+        console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
+        trackSlider.max = duration
+
+        
+        title.innerText = allTracks[songNumber].track.name;
+        EmbedController.loadUri(allTracks[songNumber].track.uri);
+        EmbedController.play();
+        // spotifyPlay.innerHTML = "Pause";
+    })
+
+    //If Clicked Previous
+    prevBtn.addEventListener('click', (event)=>{
+        if(songNumber == 0){
+            songNumber = allTracks.length - 1;
+        } else {
+            songNumber -= 1;
+        }
+        //Format duration from ms into seconds
+        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+        console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
+        trackSlider.max = duration
+
+        // console.log("Prev Song ", songNumber , "of", allTracks.length);
+        // console.log("Lets play new Track: ", allTracks[songNumber].track.name , allTracks[songNumber]);
+        //Update title of next song
+        title.innerText = allTracks[songNumber].track.name;
+        EmbedController.loadUri(allTracks[songNumber].track.uri);
+        EmbedController.play();
+        // spotifyPlay.innerHTML = "Pause";
+    })
+
+    // Similar Playlists Event listener
+    let similarPlaylists = document.querySelector('#similarPlaylists');
+    similarPlaylists.addEventListener('click', async(event) => {
+        console.log("CAN WE PLAY" , event);
+        let newPlaylist = await getPlaylistInfo(event.target.id)
+        console.log("DID I WORK? ", newPlaylist)
+        allTracks = newPlaylist.tracks.items;
+
+        // Convert music duration from ms to seconds
+        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+        trackSlider.max = duration
+
+        songNumber = 1
+        // console.log("Song Duration: ", formattedTime)
+        EmbedController.loadUri(allTracks[songNumber].track.uri);
+
+        //Update Song Art
+        let songArt = document.querySelector("#songArt");
+        console.log(allTracks[1].track.album.images[0].url)
+        songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
+
+        // Update Song Title 
+        title.innerText = allTracks[songNumber].track.name
+
+        //Play the track
+        EmbedController.play();
+        //Play the art Video background
+        artVideo.play();
+    })
+
 }
 
 // Then make an api call using token
@@ -120,10 +224,8 @@ async function fetchDataManager(searchText) {
             //Get Album Data 
             const findTrackResult = await findTrack(searchResult)
             
-    
             //GetTrack
             const getTrackResult = await getPlaylistInfo(findTrackResult)
-            console.log("playlists", getTrackResult.tracks.items)
     
             //Manage Tracks
             const manageTrackResult = await manageTrack(getTrackResult.tracks.items);
@@ -152,12 +254,12 @@ async function getTrackInfo(access_token) {
 
 //This function searches albums
 async function getSearchResult(token, searchText) {
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Cplaylist&limit=1`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=artist%2Cplaylist&limit=6`, {
         method: 'GET',
         headers: { 'Authorization': 'Bearer ' + token },
     });
     let searchRes = response.json()
-    console.log("Search Result: ", searchRes)
+    console.log("Search Result, Playlist: ", searchRes)
     return searchRes
 }
 
@@ -175,21 +277,74 @@ async function findTrack(data){
     //List of tracks
     console.log("First album from search: ", data.playlists.items);
     let totalItems = data.playlists.items.length
-    let imageEl = document.querySelector("#searchResults");
-    imageEl.innerHTML = ""
+    let optionCards = document.querySelector("#optionCards");
+    let playerSection = document.querySelector("#player");
+
+    if(totalItems) {
+        optionCards.classList.add('hideSection');
+        playerSection.classList.remove('hideSection');
+    }
+    // let imageEl = document.querySelector("#searchResults");
+    // imageEl.innerHTML = ""
+
+    //Update the current music to the player
+    let songArt = document.querySelector("#songArt");
+    let playlistTitle = document.querySelector("#playlistTitle");
+    let similarPlaylistsEl = document.querySelector("#similarPlaylists")
+    songArt.removeAttribute("src");
+    songArt.setAttribute("src", data.playlists.items[0].images[0].url);
+    playlistTitle.innerText = data.playlists.items[0].name;
 
     //If more than 1 limit used during search
-    for(let i = 0; i < totalItems; i++){
-        console.log(data.playlists.items[i].name)
+    for(let i = 1; i < totalItems; i++){
+        let newCard = document.createElement("div");
+        newCard.classList.add("card","playlistCard","mb-0");
 
-        let title = document.querySelector("#songTitle");
-        let songArt = document.querySelector("#songArt");
-        songArt.removeAttribute("src");
+        // new row in card for image and body
+        let fullBodyCard = document.createElement("div");
+        fullBodyCard.classList.add("row","g-0");
 
-        songArt.setAttribute("src", data.playlists.items[i].images[0].url);
-        title.innerText = data.playlists.items[i].name
+        // Col fo image
+        let imageCol = document.createElement("div");
+        imageCol.classList.add("col-md-4");
 
-        console.log(data.playlists.items[i].images[0].url)
+        // Col fo image
+        let bodyCol = document.createElement("div");
+        bodyCol.classList.add("col-md-8");
+        
+        let playlistImg = document.createElement("img");
+        playlistImg.classList.add("card-img-top","overlayImage");
+        playlistImg.setAttribute("src", data.playlists.items[i].images[0].url);
+
+        // data.playlists.items[i].images[0].url
+
+        let cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+
+        let cardHeading = document.createElement("h5");
+        cardHeading.innerText = data.playlists.items[i].name;
+
+        let frameVinylImg = document.createElement("img");
+        frameVinylImg.setAttribute("src", './assets/images/frameVinyl.png');
+        frameVinylImg.classList.add('albumFrame')
+
+        let cardBtn = document.createElement("button");
+        cardBtn.setAttribute("id" , data.playlists.items[i].href);
+        cardBtn.innerText="Play"
+
+
+        newCard.append(fullBodyCard);
+        imageCol.append(playlistImg)
+        // Add image to col
+        fullBodyCard.appendChild(imageCol);
+        // Add heading
+        bodyCol.append(cardHeading);
+        bodyCol.append(frameVinylImg)
+        bodyCol.append(cardBtn)
+        fullBodyCard.appendChild(bodyCol);
+        similarPlaylistsEl.append(newCard);
+        console.log("Similar playlists: ",data.playlists.items[i].name);
+        // console.log("Playlist Name" ,data.playlists.items[0].name)
     }
 
     //Return url of the album
@@ -197,9 +352,28 @@ async function findTrack(data){
 }
 
 async function manageTrack(data){
-    console.log("List of Tracks: ", data)
+    // console.log("List of Tracks: ", data)
     if (data.length){
         return data;
     }
 }
 
+// Function to convert ms into seconds
+function timeConvertor(milliseconds){
+    seconds = Math.floor(milliseconds / 1000);
+    // console.log(seconds," Seconds"); // 21:12:09
+    return seconds;
+}
+
+// Length of the song updater 
+function trackTime(timeLeft){
+    //Convert Seconds into minutes
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = (timeLeft - minutes * 60);
+
+    //Convert (9 into 09)
+    function n(n){
+        return n > 9 ? "" + n: "0" + n;
+    }
+    return minutes+":"+n(seconds)
+}
