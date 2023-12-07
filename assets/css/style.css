@@ -72,6 +72,9 @@ button {
 	background: #34283b;
 	transition: 200ms;
   border-radius: calc(var(--curve) * 2.9px);
+
+}
+.optionCards button{
   color: white;
 }
 
