@@ -103,7 +103,7 @@ button::after {
   z-index: -3;
 }
 
-button:hover {
+.optionCards button:hover {
 	border: 3px solid #ff6ebb;
 }
 
@@ -170,7 +170,18 @@ button:focus {
 /* Portfolio cards End */
 
 /* Footer Styles */
-
+.aboutPageSection{
+  background-color: #fadde1;
+    border: 1px solid gray;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 50px !important;
+}
+.aboutPageSection .columnBox {
+  border: 0px;
+  box-shadow: none;
+  padding: 0;
+}
 .footer {
   display: grid;
   justify-content: space-around;
@@ -314,6 +325,7 @@ h1:hover {
   align-items: center;
   justify-content: center;
   border: 1px solid gray;
+  text-align: center;
 }
 
 .columnBox {
@@ -375,13 +387,11 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistCard .overlayImage{
   border-radius: 5px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   /* padding: 15px; */
   position: absolute;
-  z-index: 10;
-  top: 17px;
-  left: 18px;
+  z-index: 1;
 }
 
 
@@ -398,13 +408,14 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistCard button {
   background-color: var(--main-nav-color);
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   z-index: 1;
   position: absolute;
-  top: 28px;
-  left: 80px;
+  top: 22px;
+  left: 74px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .playlistCard button::before, button::after {
   display: block;
@@ -415,9 +426,10 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 .playlistCard .fa-play:before {
   content: "\f04b";
   position: absolute;
-
   font-size: 21px;
+  top: 25px;
   z-index: 1;
+  left: 6px;
   }
 .albumFrame{
   height: 130px !important;
@@ -438,12 +450,14 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
   justify-content: flex-start;
   min-height: 450px;
   /* padding: 10px; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   border-radius: 15px;
   padding: 10px 15px;
   width: 80%;
   height: 572px;
+  overflow: scroll;
   min-width: 380px;
+  overflow-x: hidden;
 }
 .nextTracks h2{
   font-size: 18px;
