@@ -43,7 +43,7 @@ body {
   overflow: hidden;
 }
 .banner .clouds img {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   max-width: 100%;
   animation: animate calc(8s * var(--i)) linear infinite;
@@ -102,7 +102,7 @@ button::after {
   z-index: -3;
 }
 
-button:hover {
+.optionCards button:hover {
 	border: 3px solid #ff6ebb;
 }
 
@@ -363,13 +363,11 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistCard .overlayImage{
   border-radius: 5px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   /* padding: 15px; */
   position: absolute;
-  z-index: 10;
-  top: 17px;
-  left: 18px;
+  z-index: 1;
 }
 
 
@@ -386,13 +384,14 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistCard button {
   background-color: var(--main-nav-color);
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   z-index: 1;
   position: absolute;
-  top: 28px;
-  left: 80px;
+  top: 22px;
+  left: 74px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .playlistCard button::before, button::after {
   display: block;
@@ -403,9 +402,10 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 .playlistCard .fa-play:before {
   content: "\f04b";
   position: absolute;
-
   font-size: 21px;
+  top: 25px;
   z-index: 1;
+  left: 6px;
   }
 .albumFrame{
   height: 130px !important;

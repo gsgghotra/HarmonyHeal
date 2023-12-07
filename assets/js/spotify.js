@@ -64,8 +64,9 @@ async function playerControls(EmbedController){
 
     // Similar Playlists Event listener
     let similarPlaylists = document.querySelector('#similarPlaylists');
+    let nextTracks = document.querySelector('#nextTracks');
     
-
+    //Event listener for cards on index page
     optionSection.addEventListener('click', async(event) => {
         //console.log(event)
         // Only trigger if the element has dataset
@@ -106,6 +107,7 @@ async function playerControls(EmbedController){
         }
     })
 
+    // Event Listerner for Play button
     spotifyPlay.addEventListener('click', ()=>{
         //Check if the HTML element has pause (sync with button)
         if(playerToogleBtn.classList.contains("fa-pause")){
@@ -126,7 +128,7 @@ async function playerControls(EmbedController){
 
     //If Clicked Next
     nextBtn.addEventListener('click', (event)=>{
-        console.log("PLAY")
+        //console.log("PLAY")
         if(songNumber < allTracks.length - 1){
             songNumber += 1;
         } else {
@@ -157,21 +159,32 @@ async function playerControls(EmbedController){
         console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
         trackSlider.max = duration
 
-        // console.log("Prev Song ", songNumber , "of", allTracks.length);
-        // console.log("Lets play new Track: ", allTracks[songNumber].track.name , allTracks[songNumber]);
-        //Update title of next song
         title.innerText = allTracks[songNumber].track.name;
         EmbedController.loadUri(allTracks[songNumber].track.uri);
         EmbedController.play();
 
     })
 
+    //Event listener for similar albums section
     similarPlaylists.addEventListener('click', async(event) => {
-        // Play similar albums
-        let newPlaylist = await getPlaylistInfo(event.target.id);
-        // Update all tracks here
-        allTracks = newPlaylist.tracks.items;
-        loadTrack(allTracks, EmbedController, songNumber)
+
+        if(event.target.dataset.playlist){
+            // Play similar albums
+            let newPlaylist = await getPlaylistInfo(event.target.dataset.playlist);
+            // Update all tracks here
+            allTracks = newPlaylist.tracks.items;
+            loadTrack(allTracks, EmbedController, songNumber)
+        }
+    })
+
+    // Event listener for next tracks section
+    nextTracks.addEventListener('click', (event) => {
+        if(event.target.dataset.song){
+            console.log("clicked on the button");
+            songNumber = event.target.dataset.song;
+
+            loadTrack(allTracks, EmbedController, songNumber);
+        }
     })
 
 }
@@ -291,9 +304,8 @@ async function findTrack(data){
         frameVinylImg.classList.add('albumFrame')
 
         let cardBtn = document.createElement("button");
-        let controlA = document.createElement('button');
         cardBtn.classList.add("fa-solid","fa-play","fa-2xl");
-        cardBtn.setAttribute("id" , data.playlists.items[i].href);
+        cardBtn.setAttribute("data-playlist" , data.playlists.items[i].href);
 
 
 
@@ -342,6 +354,7 @@ function trackTime(timeLeft){
     return minutes+":"+n(seconds)
 }
 
+// Function to play the track and display the image and the title
 function loadTrack(allTracks, EmbedController, songNumber){
 
     let title = document.querySelector("#songTitle");
@@ -363,13 +376,6 @@ function loadTrack(allTracks, EmbedController, songNumber){
 
     for(let i = 1; i < noOfTracks; i++){
 
-        // <ul class="controls">
-//   <li >
-//   <a href="javascript:void(0);" id="spotifyPlay">
-//       <span id="playerToogleBtn" class="fa-solid fa-play fa-2xl playericon"></span>
-//   </a>
-// </li>
-// </ul>
         console.log("Track ", i , " ", allTracks[i].track);
         let songDiv = document.createElement('div');
         songDiv.classList.add('tracksList');
@@ -385,7 +391,7 @@ function loadTrack(allTracks, EmbedController, songNumber){
         let controlLi = document.createElement('li');
         let controlA = document.createElement('button');
         controlA.classList.add("fa-solid","fa-play","fa-2xl");
-        controlA.setAttribute('id', noOfTracks);
+        controlA.setAttribute("data-song", i);
 
         // Add image
         let songListImg = document.createElement("img");
@@ -407,7 +413,6 @@ function loadTrack(allTracks, EmbedController, songNumber){
     duration = timeConvertor(allTracks[songNumber].track.duration_ms);
     trackSlider.max = duration
 
-    songNumber = 1
     // console.log("Song Duration: ", formattedTime)
     EmbedController.loadUri(allTracks[songNumber].track.uri);
 
