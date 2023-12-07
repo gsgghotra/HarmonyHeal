@@ -47,7 +47,8 @@ body {
   bottom: 0;
   max-width: 100%;
   animation: animate calc(8s * var(--i)) linear infinite;
-  z-index: -1
+  z-index: -1;
+  overflow:hidden;
 ;
 }
 @keyframes animate {
@@ -184,6 +185,7 @@ button:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: start;
 }
 
 /* Portfolio cards End */
@@ -338,7 +340,6 @@ h1:hover {
 .columnPlayer {
 float: left;
 text-align: center;
-margin: 10px 30px 30px 30px;
 }
 
 .columnQuote {
@@ -353,28 +354,78 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistsSuggestions {
   background: #ffd2d9;
-  border: 1px solid;
+  border: 1px solid gray;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   grid-auto-flow: row;
-  align-items: self-start;
-  justify-content: flex-start;
+  align-items: baseline;
+  justify-content: center;
   min-height: 450px;
-  padding: 10px;
+  /* padding: 10px; */
   flex-wrap: wrap;
+  border-radius: 15px;
+  padding: 10px 15px;
+  width: fit-content;
+}
+.playlistsSuggestions h2{
+  font-size: 18px;
+  padding-left: 20px;
+  padding-top: 5px;
 }
 
 .playlistCard{
-  height: 350px;
-  border-radius: 15px;
-  margin: 10px;
-  width: 200px;
+  max-width: 400px;
+  width: 350px;
+  height: 97px; 
+  margin-bottom: 6px !important;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.playlistCard img{
-  border-radius: 15px;
-  padding: 15px;
+.playlistCard .overlayImage{
+  border-radius: 5px;
+  width: 70px;
+  height: 70px;
+  /* padding: 15px; */
+  position: absolute;
+  z-index: 10;
+  top: 13px;
+  left: 12px;
+}
+
+
+
+.playlistCard h5{
+  font-size: 14px;
+    overflow: hidden;
+    padding: 4px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-left: 32px;
+}
+
+.playlistCard button {
+  width: 50px;
+  height: 50px;
+  bottom: 8px;
+  right: 8px;
+  position: absolute;
+  color: #757676;
+  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px; */
+  border: 1px solid #dbacbc;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background: #eaeaea;
+}
+
+.albumFrame{
+  height: 130px !important;
+  width: 160px !important;
+  position: absolute;
+  top: -19px;
+  margin: 0;
+  margin-left: -127px;
 }
 /* quote styling */
 h5{

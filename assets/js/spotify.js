@@ -268,12 +268,24 @@ async function findTrack(data){
     //If more than 1 limit used during search
     for(let i = 1; i < totalItems; i++){
         let newCard = document.createElement("div");
-        newCard.classList.add("card","playlistCard");
-        newCard.style.backgroundImage = "url('../assets/images/playlistsBG.png')";
+        newCard.classList.add("card","playlistCard","mb-0");
 
+        // new row in card for image and body
+        let fullBodyCard = document.createElement("div");
+        fullBodyCard.classList.add("row","g-0");
+
+        // Col fo image
+        let imageCol = document.createElement("div");
+        imageCol.classList.add("col-md-4");
+
+        // Col fo image
+        let bodyCol = document.createElement("div");
+        bodyCol.classList.add("col-md-8");
+        
         let playlistImg = document.createElement("img");
-        playlistImg.classList.add("card-img-top");
+        playlistImg.classList.add("card-img-top","overlayImage");
         playlistImg.setAttribute("src", data.playlists.items[i].images[0].url);
+
         // data.playlists.items[i].images[0].url
 
         let cardBody = document.createElement("div");
@@ -282,24 +294,26 @@ async function findTrack(data){
         let cardHeading = document.createElement("h5");
         cardHeading.innerText = data.playlists.items[i].name;
 
+        let frameVinylImg = document.createElement("img");
+        frameVinylImg.setAttribute("src", './assets/images/frameVinyl.png');
+        frameVinylImg.classList.add('albumFrame')
+
         let cardBtn = document.createElement("button");
         cardBtn.innerText="Play"
 
-        newCard.append(playlistImg);
-        newCard.append(cardBody);
-        cardBody.appendChild(cardHeading)
-        cardBody.appendChild(cardBtn)
+
+        newCard.append(fullBodyCard);
+        imageCol.append(playlistImg)
+        // Add image to col
+        fullBodyCard.appendChild(imageCol);
+        // Add heading
+        bodyCol.append(cardHeading);
+        bodyCol.append(frameVinylImg)
+        bodyCol.append(cardBtn)
+        fullBodyCard.appendChild(bodyCol);
         similarPlaylistsEl.append(newCard);
         console.log("Similar playlists: ",data.playlists.items[i].name);
         // console.log("Playlist Name" ,data.playlists.items[0].name)
-
-    //     <div class="card" style="width: 18rem;">
-    //     <img src="..." class="card-img-top" alt="...">
-    //     <div class="card-body">
-    //       <h5 class="card-title">Card title</h5>
-    //       <a href="#" class="btn btn-primary">Go somewhere</a>
-    //     </div>
-    //   </div>
     }
 
     //Return url of the album

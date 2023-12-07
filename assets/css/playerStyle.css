@@ -29,7 +29,7 @@ iframe{
 
 #mediaPlayer {
     width: 350px;
-    height: 550px;
+    height: 572px;
     border: 1px solid grey;
     /* background-color: rgb(219, 219, 219); */
     justify-content: center;
@@ -37,7 +37,7 @@ iframe{
     margin: 0px auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: #ffd2d9;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 #mediaPlayer img{
     width: 298px;
