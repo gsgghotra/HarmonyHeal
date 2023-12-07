@@ -296,7 +296,7 @@ h1:hover {
 .quote {
   margin: 10px 20px 20px 20px;
   border-radius: 15px;
-  background-color: #ffd2d9;
+  background: linear-gradient(to right, rgba(255, 210, 217, 0.9), rgba(255, 255, 255, 0.5));
   display: grid;
   padding: 50px;
   align-items: center;
