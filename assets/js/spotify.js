@@ -112,7 +112,6 @@ async function playerControls(EmbedController){
                         //Convert time into seconds
                         duration = timeConvertor(allTracks[songNumber].track.duration_ms);
 
-                        
                         title.innerText = allTracks[songNumber].track.name;
                         EmbedController.loadUri(allTracks[songNumber].track.uri);
                         EmbedController.play();
@@ -179,16 +178,34 @@ async function playerControls(EmbedController){
         title.innerText = allTracks[songNumber].track.name;
         EmbedController.loadUri(allTracks[songNumber].track.uri);
         EmbedController.play();
-        // spotifyPlay.innerHTML = "Pause";
+
     })
 
     // Similar Playlists Event listener
     let similarPlaylists = document.querySelector('#similarPlaylists');
+    let nextTracks = document.querySelector('#nextTracks');
     similarPlaylists.addEventListener('click', async(event) => {
-        console.log("CAN WE PLAY" , event);
-        let newPlaylist = await getPlaylistInfo(event.target.id)
-        console.log("DID I WORK? ", newPlaylist)
+
+
+        // Play similar albums
+        let newPlaylist = await getPlaylistInfo(event.target.id);
+
+        // Update all tracks here
         allTracks = newPlaylist.tracks.items;
+
+        //Plan to show next 8 songs
+        let noOfTracks = 8;
+        if (!allTracks.length > 7) {
+            noOfTracks = allTracks.length
+        }
+
+        for(let i = 0; i < noOfTracks; i++){
+            console.log("Track ", i , " ", allTracks[i].track);
+            let songDiv = document.createElement('div');
+            songDiv.innerText=allTracks[i].track.name
+            nextTracks.append(songDiv);
+
+        }
 
         // Convert music duration from ms to seconds
         duration = timeConvertor(allTracks[songNumber].track.duration_ms);
@@ -200,7 +217,7 @@ async function playerControls(EmbedController){
 
         //Update Song Art
         let songArt = document.querySelector("#songArt");
-        console.log(allTracks[1].track.album.images[0].url)
+        //console.log(allTracks[1].track.album.images[0].url)
         songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
 
         // Update Song Title 
