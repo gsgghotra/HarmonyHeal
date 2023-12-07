@@ -11,7 +11,7 @@ optionSection.addEventListener('click', async(event) => {
     h5El.innerHTML = '';
     h6El.innerHTML = '';
 quoteCat = event.target.dataset.quote;
-console.log(quoteCat)
+// console.log(quoteCat)
 fetch('https://api.api-ninjas.com/v1/quotes?category=' + quoteCat, {
   headers: {
       'X-Api-Key': 'ywwpzBRnPosEDtdbyOdjyQ==SbFIzsUdYwJwVLmm',
@@ -20,9 +20,9 @@ fetch('https://api.api-ninjas.com/v1/quotes?category=' + quoteCat, {
 })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      console.log(data[0].quote)
-      console.log(data[0].quote.author)
+      // console.log(data);
+      // console.log(data[0].quote)
+      // console.log(data[0].quote.author)
         
         h5El.textContent = '"' + data[0].quote + '"';
         h6El.textContent = data[0].author 

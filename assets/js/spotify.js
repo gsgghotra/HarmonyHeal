@@ -49,6 +49,7 @@ async function playerControls(EmbedController){
     let artVideo = document.getElementById('artVideo');
     let playerToogleBtn = document.querySelector("#playerToogleBtn");
     let trackSlider = document.querySelector("#trackSlider");
+    trackSlider.value = 0;
     
     //Variable for duration
     let duration = 0; 
@@ -81,7 +82,8 @@ async function playerControls(EmbedController){
                 EmbedController.seek(trackSlider.value)
             }
             //Timer of the song
-            EmbedController.addListener('playback_update', e => {
+            EmbedController.addListener('playback_update', async(e) => {
+
                 document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
                 document.getElementById('currentTimer').innerText = trackTime(timeConvertor(e.data.position));
                 trackSlider.value = parseInt(e.data.position / 1000, 10);
@@ -101,7 +103,7 @@ async function playerControls(EmbedController){
     
                         title.innerText = allTracks[songNumber].track.name;
                         EmbedController.loadUri(allTracks[songNumber].track.uri);
-                        EmbedController.play();
+                        await EmbedController.play();
                     }
                 }
 
@@ -111,26 +113,32 @@ async function playerControls(EmbedController){
     })
 
     // Event Listerner for Play button
-    spotifyPlay.addEventListener('click', ()=>{
-        //Check if the HTML element has pause (sync with button)
+    spotifyPlay.addEventListener('click', async()=>{
+
+        if (trackSlider.value == '0'){
+
+                    
+        } else {
+                    //Check if the HTML element has pause (sync with button)
         if(playerToogleBtn.classList.contains("fa-pause")){
             //Pause here
-            EmbedController.pause();
+            await EmbedController.pause();
             playerToogleBtn.classList.remove("fa-pause");
             playerToogleBtn.classList.add("fa-play");
-            artVideo.pause();
+            await artVideo.pause();
 
         } else {
             //Play here
-            EmbedController.togglePlay();
+            await EmbedController.togglePlay();
             playerToogleBtn.classList.add("fa-pause")
             playerToogleBtn.classList.remove("fa-play")
-            artVideo.play();
+            await artVideo.play();
+        }
         }
     })
 
     //If Clicked Next
-    nextBtn.addEventListener('click', (event)=>{
+    nextBtn.addEventListener('click', async(event)=>{
         //console.log("PLAY")
         if(songNumber < allTracks.length - 1){
             songNumber += 1;
@@ -138,33 +146,18 @@ async function playerControls(EmbedController){
             songNumber = 0;
         }
 
-        //Convert time into seconds
-        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
-        // console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
-        trackSlider.max = duration;
-
-        
-        title.innerText = allTracks[songNumber].track.name;
-        EmbedController.loadUri(allTracks[songNumber].track.uri);
-        EmbedController.play();
+        await loadTrack(allTracks, EmbedController, songNumber);
     })
 
     //If Clicked Previous
-    prevBtn.addEventListener('click', (event)=>{
+    prevBtn.addEventListener('click', async (event)=>{
         if(songNumber == 0){
             songNumber = allTracks.length - 1;
         } else {
             songNumber -= 1;
         }
-        //Format duration from ms into seconds
-        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
-        // console.log(allTracks[songNumber].track.name ,"Song Duration: ", duration)
-        trackSlider.max = duration
 
-        title.innerText = allTracks[songNumber].track.name;
-        EmbedController.loadUri(allTracks[songNumber].track.uri);
-        EmbedController.play();
-
+        await loadTrack(allTracks, EmbedController, songNumber);
     })
 
     //Event listener for similar albums section
@@ -182,7 +175,7 @@ async function playerControls(EmbedController){
     // Event listener for next tracks section
     nextTracks.addEventListener('click', (event) => {
         if(event.target.dataset.song){
-            console.log("clicked on the button");
+            //console.log("clicked on the button");
             songNumber = event.target.dataset.song;
             loadTrack(allTracks, EmbedController, songNumber);
         }
@@ -356,7 +349,7 @@ function trackTime(timeLeft){
 }
 
 // Function to play the track and display the image and the title
-function loadTrack(allTracks, EmbedController, songNumber){
+async function loadTrack (allTracks, EmbedController, songNumber){
 
     let title = document.querySelector("#songTitle");
     let artVideo = document.getElementById('artVideo');
@@ -364,11 +357,9 @@ function loadTrack(allTracks, EmbedController, songNumber){
     let nextTracks = document.querySelector('#nextTracks');
     let mediaPlayerEl = document.querySelector('#mediaPlayer');
     let playerToogleBtn = document.querySelector("#playerToogleBtn");
-
-    nextTracks.innerText="";
-    //Update Song Art
     let songArt = document.querySelector("#songArt");
 
+    nextTracks.innerText="";
     //Plan to show next 8 songs
     let noOfTracks = allTracks.length - songNumber;
     let loopLimit;
@@ -425,10 +416,11 @@ function loadTrack(allTracks, EmbedController, songNumber){
     songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
 
     // Update Song Title 
-    title.innerText = allTracks[songNumber].track.name
+    title.innerText = allTracks[songNumber].track.name;
+    songArt.setAttribute("src", allTracks[songNumber].track.album.images[0].url);
 
     //Play the track
-    EmbedController.play();
+    await EmbedController.play();
     //Play the art Video background
     artVideo.play();
 
