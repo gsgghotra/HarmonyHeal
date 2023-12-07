@@ -1,6 +1,6 @@
 * 
 .containerMain {
-  width: 95%;
+  width: 100%;
   margin: auto;
   padding-top: 5%;
   padding-bottom: 5%;
@@ -222,10 +222,12 @@ button:focus {
   display: grid;
   justify-content: space-around;
   align-content: center;
+  position:fixed;
+  bottom:0;
   width: 100%;
   height: 60px;
   line-height: 60px;
-  background-color: var(--main-nav-color);
+  background-color: var(--main-card-color);
   margin-top: 50px;
   padding-top: 10px;
 }
