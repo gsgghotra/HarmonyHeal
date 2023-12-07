@@ -426,12 +426,14 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
   justify-content: flex-start;
   min-height: 450px;
   /* padding: 10px; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   border-radius: 15px;
   padding: 10px 15px;
   width: 80%;
   height: 572px;
+  overflow: scroll;
   min-width: 380px;
+  overflow-x: hidden;
 }
 .nextTracks h2{
   font-size: 18px;
