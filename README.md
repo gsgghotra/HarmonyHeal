@@ -7,6 +7,9 @@
 - ⚡ Fun fact **A Tarantula taps to ask to mate with it's partner. If the male Tarantula gets the patterns the female is tapping wrong, he will end up as FOOD!**
 
 ## Description 
+Harmony Heal is website to help users manage their emotions and mental health through music. 
+
+The website has been developed with wellbeing in mind and aims to be a simple to use tool that can be accesed by carers or users who want to listen to different music playlists depending on how they are feeling.
 
 
 ## Deployed Project Link
