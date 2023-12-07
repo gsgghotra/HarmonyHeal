@@ -200,7 +200,7 @@ async function fetchDataManager(searchText) {
             const manageTrackResult = await manageTrack(getTrackResult.tracks.items);
     
             if (manageTrackResult){
-                console.log("Success");
+                //console.log("Success");
                 return manageTrackResult;
             }
     
@@ -381,8 +381,15 @@ async function loadTrack (allTracks, EmbedController, songNumber){
 
         let listSpan = document.createElement('span');
         
-        listSpan.innerText=allTracks[i].track.name;
-        songDiv.appendChild(listSpan);
+        // console.log(allTracks)
+        // console.log("Track ", i , " ", allTracks[i].track)
+        if (allTracks[i].track){
+            listSpan.innerText= await allTracks[i].track.name;
+            songDiv.appendChild(listSpan);
+        } else {
+            i++
+        }
+        
 
         //Inside the song div, add a button
         let controlUl = document.createElement('ul');
@@ -429,3 +436,20 @@ async function loadTrack (allTracks, EmbedController, songNumber){
     playerToogleBtn.classList.add("fa-pause");
     mediaPlayerEl.classList.remove("hidden");
 }
+
+
+//After 3 Seconds check if the iFrame is loaded
+
+setTimeout(()=>{
+    let iFrameEL = document.getElementById('embed-iframe');
+    if(iFrameEL){
+        // Define onSpotifyIframeApiReady 
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+            
+        };
+        console.log('Please Refresh')
+    } else {
+        //console.log('I frame loaded');
+        
+    }
+}, 2000);

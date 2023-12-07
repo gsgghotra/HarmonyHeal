@@ -56,7 +56,7 @@ iframe{
 #mediaPlayer h4{
     text-align: center;
     color: #212529;
-    font-size: 18px;
+    font-size: 15px;
     max-width: 85%;
     margin: 0 auto;
     height: 50px;
@@ -68,7 +68,7 @@ iframe{
 .playlistTitle{
     margin: 0 auto;
     color: #6c757d;
-    font-size: 14px;
+    font-size: 12px;
     max-height: 20px;
     overflow: hidden;
     text-align: center;
