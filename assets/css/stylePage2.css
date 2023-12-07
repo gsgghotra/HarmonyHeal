@@ -51,7 +51,7 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
   --main-bg-color: #FFEF9F;
   --main-card-color: #ffdfe3;
   --main-text-color: #2E2E3A;
-  --main-nav-color: #ffd2d9;
+  --main-nav-color: #fff;
   --surface-color: #fff;
   --curve: 40;
 }
@@ -99,11 +99,6 @@ body {
   100% {
     transform: translateX(100%);
   }
-}
-
-
-.navbar {
-  background-color: var(--main-nav-color) !important;
 }
 
 button {
@@ -224,7 +219,9 @@ button:focus {
 /* Footer Styles */
 
 .footer {
-  position: flex;
+  display: grid;
+  justify-content: space-around;
+  align-content: center;
   width: 100%;
   height: 60px;
   line-height: 60px;
