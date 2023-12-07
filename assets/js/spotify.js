@@ -246,6 +246,13 @@ async function findTrack(data){
     //List of tracks
     console.log("First album from search: ", data.playlists.items);
     let totalItems = data.playlists.items.length
+    let optionCards = document.querySelector("#optionCards");
+    let playerSection = document.querySelector("#player");
+
+    if(totalItems) {
+        optionCards.classList.add('hidden');
+        playerSection.classList.remove('hidden');
+    }
     // let imageEl = document.querySelector("#searchResults");
     // imageEl.innerHTML = ""
 
