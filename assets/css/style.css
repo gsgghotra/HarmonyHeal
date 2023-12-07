@@ -72,6 +72,7 @@ button {
 	background: #34283b;
 	transition: 200ms;
   border-radius: calc(var(--curve) * 2.9px);
+  color: white;
 }
 
 button span {
@@ -256,13 +257,13 @@ h1:hover {
     }
 }
 
-@media (max-width: 1207px) {
-  .optionSection h2 {
-      font-size: smaller;
-      background-color: black;
-      
-      
+@media (min-width: 769px) and (max-width: 1223px) {
+  #optionCards h5 {
+      font-size:small;
   }
+  #optionCards p {
+    font-size:small;
+}
 }
 
 /* Portfolio cards Start */
