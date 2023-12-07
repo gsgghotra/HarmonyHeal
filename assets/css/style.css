@@ -254,6 +254,15 @@ h1:hover {
     }
 }
 
+@media (max-width: 1207px) {
+  .optionSection h2 {
+      font-size: smaller;
+      background-color: black;
+      
+      
+  }
+}
+
 /* Portfolio cards Start */
 
 
