@@ -235,9 +235,6 @@ button:focus {
  width: 100%;
 }
 
-#mainNav img{
- 
-}
 
   #navBar2 {
     display: flex;
@@ -260,7 +257,7 @@ button:focus {
 
 h1 {
   font-weight: 500;
-  color:var(--main-text-color)
+  color:var(--main-text-color);
   text-decoration: inherit;
 } 
 
@@ -313,7 +310,7 @@ h1:hover {
 }
 
 .rowMain {
-  display: flex;
+  display: grid;
   margin: 10px 20px 20px 20px;
 }
 
@@ -353,6 +350,32 @@ margin: 30px 30px 30px 30px;
 box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 }
 
+
+.playlistsSuggestions {
+  background: #ffd2d9;
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  grid-auto-flow: row;
+  align-items: self-start;
+  justify-content: flex-start;
+  min-height: 450px;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.playlistCard{
+  height: 350px;
+  border-radius: 15px;
+  margin: 10px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.playlistCard img{
+  border-radius: 15px;
+  padding: 15px;
+}
 /* quote styling */
 h5{
   margin-top: 1%;

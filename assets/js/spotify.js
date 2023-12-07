@@ -98,6 +98,7 @@ async function playerControls(EmbedController){
                 //Timer of the song
                 EmbedController.addListener('playback_update', e => {
                     document.getElementById('timer').innerText = `- ${trackTime(duration - parseInt(e.data.position / 1000, 10))}`;
+                    document.getElementById('currentTimer').innerText = trackTime(timeConvertor(e.data.position));
                     trackSlider.value = parseInt(e.data.position / 1000, 10);
 
                     if(trackTime(duration - parseInt(e.data.position / 1000, 10)) == '0:00'){
@@ -250,8 +251,8 @@ async function findTrack(data){
     let playerSection = document.querySelector("#player");
 
     if(totalItems) {
-        optionCards.classList.add('hidden');
-        playerSection.classList.remove('hidden');
+        optionCards.classList.add('hideSection');
+        playerSection.classList.remove('hideSection');
     }
     // let imageEl = document.querySelector("#searchResults");
     // imageEl.innerHTML = ""
@@ -259,14 +260,46 @@ async function findTrack(data){
     //Update the current music to the player
     let songArt = document.querySelector("#songArt");
     let playlistTitle = document.querySelector("#playlistTitle");
+    let similarPlaylistsEl = document.querySelector("#similarPlaylists")
     songArt.removeAttribute("src");
     songArt.setAttribute("src", data.playlists.items[0].images[0].url);
     playlistTitle.innerText = data.playlists.items[0].name;
 
     //If more than 1 limit used during search
-    for(let i = 0; i < totalItems; i++){
-        console.log("Similar playlists: ",data.playlists.items[i].name)
+    for(let i = 1; i < totalItems; i++){
+        let newCard = document.createElement("div");
+        newCard.classList.add("card","playlistCard");
+        newCard.style.backgroundImage = "url('../assets/images/playlistsBG.png')";
+
+        let playlistImg = document.createElement("img");
+        playlistImg.classList.add("card-img-top");
+        playlistImg.setAttribute("src", data.playlists.items[i].images[0].url);
+        // data.playlists.items[i].images[0].url
+
+        let cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+
+        let cardHeading = document.createElement("h5");
+        cardHeading.innerText = data.playlists.items[i].name;
+
+        let cardBtn = document.createElement("button");
+        cardBtn.innerText="Play"
+
+        newCard.append(playlistImg);
+        newCard.append(cardBody);
+        cardBody.appendChild(cardHeading)
+        cardBody.appendChild(cardBtn)
+        similarPlaylistsEl.append(newCard);
+        console.log("Similar playlists: ",data.playlists.items[i].name);
         // console.log("Playlist Name" ,data.playlists.items[0].name)
+
+    //     <div class="card" style="width: 18rem;">
+    //     <img src="..." class="card-img-top" alt="...">
+    //     <div class="card-body">
+    //       <h5 class="card-title">Card title</h5>
+    //       <a href="#" class="btn btn-primary">Go somewhere</a>
+    //     </div>
+    //   </div>
     }
 
     //Return url of the album

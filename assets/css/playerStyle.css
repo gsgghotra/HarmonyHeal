@@ -61,7 +61,7 @@ iframe{
     margin: 0 auto;
     height: 50px;
     max-height: 50px;
-    overflow: auto;
+    overflow: hidden;
     display: grid;
     align-content: center;
 }

@@ -65,7 +65,7 @@
 
 
 <!-- Landing page - Cards Element Start-->
-<section id="optionCards" class="hideSection">
+<section id="optionCards" class="">
   <h1> HarmonyHeal</h1>
     <h2>How would you like to feel?</h2>
     <div id="optionSection">
@@ -178,67 +178,79 @@
 </section>
 
 <!-- Player Section -->
-<section class="player" id="player">
+<section class="player " id="player">
       <div class="containerMain">
-        <div class="quote">
+        <div class="quote col-12">
           <div id="quote"><h2 class="h2box" >Daily Quotes</h2>
           </div>
         </div>
-        <div class="rowMain">
-          <div class="columnPlayer">
-            <section id="playlists">
-              <div id="mediaPlayer" class="visible">
-                  <div id="wrap_video">
-                      <div id="video_box">
-                          <div id="video_overlays">
-                              <img src="./assets/images/artholder.jpg" id="songArt" class="artOverlay">
-                          </div>
-                          <div>
-                              <video id="artVideo" loop>
-                                  <source src="assets/video/peachTheme.mp4"  type="video/mp4">
-                                  Your browser does not support the video tag.
-                              </video>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- <img src="assets/images/Sleep.png" id="songArt" alt="Music Art"> -->
-                  <h4 class="musicTitle" id="songTitle"> Song Title</h4>
-                  <p class="playlistTitle" id="playlistTitle">Playlist</p>
-                  <span class="currentTimer" id="currentTimer">0:00</span>
-                  <span class="timer" id="timer">0:00</span>
-                  <input type="range" id="trackSlider"/>
-                  
-      
-                  <ul class="controls">
-                      <li>
-                          <a href="javascript:void(0);" id="spotifyPrev">
-                              <span class="fa-solid fa-angle-left fa-2xl playericon"></span>
-                          </a>
-                      </li>
-      
-                      <li >
-                          <a href="javascript:void(0);" id="spotifyPlay">
-                              <span id="playerToogleBtn" class="fa-solid fa-play fa-2xl playericon"></span>
-                          </a>
-                      </li>
-      
-                      <li>
-                          <a href="javascript:void(0);" id="spotifyNext">
-                              <span class="fa-solid fa-angle-right fa-2xl playericon"></span>
-                      </a>
-                      </li>
-                  </ul>
+
+        <!-- Using Grid Colums/Rows -->
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Player Col -->
+            <div class="col-4" style="max-width: 500px;">
+              <!-- Music Player -->
+              <section id="playlists" class="columnPlayer">
+                <div id="mediaPlayer" class="visible">
+                    <div id="wrap_video">
+                        <div id="video_box">
+                            <div id="video_overlays">
+                                <img src="./assets/images/artholder.jpg" id="songArt" class="artOverlay">
+                            </div>
+                            <div>
+                                <video id="artVideo" loop>
+                                    <source src="assets/video/peachTheme.mp4"  type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img src="assets/images/Sleep.png" id="songArt" alt="Music Art"> -->
+                    <h4 class="musicTitle" id="songTitle"> Song Title</h4>
+                    <p class="playlistTitle" id="playlistTitle">Playlist</p>
+                    <span class="currentTimer" id="currentTimer">0:00</span>
+                    <span class="timer" id="timer">0:00</span>
+                    <input type="range" id="trackSlider"/>
+                    
+        
+                    <ul class="controls">
+                        <li>
+                            <a href="javascript:void(0);" id="spotifyPrev">
+                                <span class="fa-solid fa-angle-left fa-2xl playericon"></span>
+                            </a>
+                        </li>
+        
+                        <li >
+                            <a href="javascript:void(0);" id="spotifyPlay">
+                                <span id="playerToogleBtn" class="fa-solid fa-play fa-2xl playericon"></span>
+                            </a>
+                        </li>
+        
+                        <li>
+                            <a href="javascript:void(0);" id="spotifyNext">
+                                <span class="fa-solid fa-angle-right fa-2xl playericon"></span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+              </section>
+
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <h2>Similar Playlists</h2>
               </div>
-            </section>
+              <div class="row">
+                <!-- Playlists -->
+                <div class="playlistsSuggestions" id="similarPlaylists">
+
+                </div>
+              </div>
           </div>
-          <div class="columnBox">
-            <h2 class="h2box">Fun Facts</h2>
-            The shadows are just like the highlights, but we're going in the opposite direction. Let that brush dance around there and play. Isn't that fantastic that you can create an almighty tree that fast? Just beat the devil out of it. Mix your color marbly don't mix it dead.
-    
-            It's a super day, so why not make a beautiful sky? You can bend rivers. But when I get home, the only thing I have power over is the garbage. Trees get lonely too, so we'll give him a little friend. Very easy to work these to death. With practice comes confidence.
-            
-            Get away from those little Christmas tree things we used to make in school. You can do anything your heart can imagine. A little happy sunlight shining through there. We'll put some happy little leaves here and there.</div>
         </div>
+
+
         <div class="rowMain">
           <div class="columnQuote"><h2 class="h2box">Happy Quote</h2>
             Quote
