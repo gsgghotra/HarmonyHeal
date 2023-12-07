@@ -90,48 +90,22 @@ button::before, button::after {
 	margin-top: -25px;
 	width: 140px;
 	height: 40px;
-	z-index: -3;
 }
 
 button::before {
-	border: 3px solid #7e5791;
 	transition: 200ms;
-  z-index: ;
+  z-index: -3;
 }
 
 button::after {
-	border: 3px solid #b37ccf;
 	transition: 500ms;
-  z-index: ;
+  z-index: -3;
 }
 
 button:hover {
 	border: 3px solid #ff6ebb;
-  z-index: ;
 }
 
-button:hover span {
-	letter-spacing: 4px;
-	font-size: 20px;
-  z-index: ;
-}
-
-button:hover::before {
-	width: 150px;
-	height: 50px;
-	margin-left: -80px;
-	margin-top: -30px;
-  z-index: 0;
-}
-
-button:hover::after {
-	width: 160px;
-	height: 60px;
-	margin-left: -85px;
-	margin-top: -35px;
-  z-index: 0;
-  
-}
 
 button:focus {
 	outline: none;
@@ -152,6 +126,10 @@ button:focus {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+.optionCards{
+  margin: 0px auto;
+  max-width: 1800px;
 }
 
 #optionCards .card {
@@ -193,7 +171,6 @@ button:focus {
 /* Footer Styles */
 
 .footer {
-  position: flex;
   display: grid;
   justify-content: space-around;
   align-content: center;
@@ -386,13 +363,13 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 
 .playlistCard .overlayImage{
   border-radius: 5px;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   /* padding: 15px; */
   position: absolute;
   z-index: 10;
-  top: 13px;
-  left: 12px;
+  top: 17px;
+  left: 18px;
 }
 
 
@@ -408,18 +385,28 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
 }
 
 .playlistCard button {
-  width: 80px;
-  height: 28px;
-  bottom: 4px;
-  right: 4px;
+  background-color: var(--main-nav-color);
+  width: 40px;
+  height: 40px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  z-index: 1;
   position: absolute;
-  color: #757676;
-  /* box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px; */
-  border: 1px solid #050505;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  background: #eaeaea;
+  top: 28px;
+  left: 80px;
+}
+.playlistCard button::before, button::after {
+  display: block;
+  width: 44px !important;
+  margin: 0;
 }
 
+.playlistCard .fa-play:before {
+  content: "\f04b";
+  position: absolute;
+
+  font-size: 21px;
+  z-index: 1;
+  }
 .albumFrame{
   height: 130px !important;
   width: 160px !important;
@@ -435,8 +422,8 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   grid-auto-flow: row;
-  align-items: baseline;
-  justify-content: center;
+  align-items: normal;
+  justify-content: flex-start;
   min-height: 450px;
   /* padding: 10px; */
   flex-wrap: wrap;
@@ -451,6 +438,70 @@ box-shadow: 0 14px 18px rgba(0, 0, 0, 0.1);
   padding-left: 20px;
   padding-top: 5px;
 }
+
+.tracksList {
+  width: 100%;
+  border: 1px solid #dee2e6;
+  padding: 5px;
+  margin: 5px auto;
+  background: white;
+  height: 60px;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.tracksList ul{
+  float: right;
+  width: 50px;
+  margin-right: 5px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  
+}
+
+.tracksList ul button{
+  background-color: var(--main-nav-color);
+  width: 44px;
+  height: 44px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.tracksList ul li button::before, button::after {
+  display: block;
+  width: 44px !important;
+  margin: 0;
+}
+
+.tracksList ul li .fa-play:before {
+  content: "\f04b";
+  position: absolute;
+  right: -2px;
+  top: 23px;
+  font-size: 21px;
+  z-index: 1;
+  }
+
+.tracksList span{
+  max-width: 60% !important;
+  /* background: red; */
+  /* width: 40% !important; */
+  position: absolute;
+  left: 60px;
+}
+
+.tracksList img {
+  width: 48px;
+    height: 48px;
+    position: absolute;
+    border-radius: 0;
+    padding: 0;
+    top: 5px;
+    left: 5px;
+}
+
 /* quote styling */
 h5{
   margin-top: 1%;

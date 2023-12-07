@@ -45,7 +45,7 @@ async function playerControls(EmbedController){
     //Lets Click on Parent div of option
     let optionSection = document.querySelector('#optionSection');
     let title = document.querySelector("#songTitle");
-    let mediaPlayerEl = document.querySelector('#mediaPlayer');
+    
     let artVideo = document.getElementById('artVideo');
     let playerToogleBtn = document.querySelector("#playerToogleBtn");
     let trackSlider = document.querySelector("#trackSlider");
@@ -62,35 +62,20 @@ async function playerControls(EmbedController){
     let nextBtn = document.querySelector("#spotifyNext");
     let prevBtn = document.querySelector("#spotifyPrev");
 
+    // Similar Playlists Event listener
+    let similarPlaylists = document.querySelector('#similarPlaylists');
+    
+
     optionSection.addEventListener('click', async(event) => {
         //console.log(event)
         // Only trigger if the element has dataset
         if(event.target.dataset.search){
             // console.log(event.target.dataset.search)
-            
+        
             searchText = event.target.dataset.search;
             allTracks = await fetchDataManager(searchText);
 
-            // Convert music duration from ms to seconds
-            duration = timeConvertor(allTracks[songNumber].track.duration_ms);
-            trackSlider.max = duration
-
-            // console.log("Song Duration: ", formattedTime)
-            EmbedController.loadUri(allTracks[songNumber].track.uri);
-
-            // Update Song Title 
-            title.innerText = allTracks[songNumber].track.name
-
-            //Play the track
-            EmbedController.play();
-            //Play the art Video background
-            artVideo.play();
-
-            // Toggle Play Pause icon on the player 
-            playerToogleBtn.classList.remove("fa-play");
-            playerToogleBtn.classList.add("fa-pause");
-            mediaPlayerEl.classList.remove("hidden");
-            // spotifyPlay.innerHTML = "Pause";
+            loadTrack(allTracks, EmbedController, songNumber);
 
                 trackSlider.onchange = ()=>{
                     EmbedController.seek(trackSlider.value)
@@ -112,7 +97,6 @@ async function playerControls(EmbedController){
                         //Convert time into seconds
                         duration = timeConvertor(allTracks[songNumber].track.duration_ms);
 
-                        
                         title.innerText = allTracks[songNumber].track.name;
                         EmbedController.loadUri(allTracks[songNumber].track.uri);
                         EmbedController.play();
@@ -179,37 +163,15 @@ async function playerControls(EmbedController){
         title.innerText = allTracks[songNumber].track.name;
         EmbedController.loadUri(allTracks[songNumber].track.uri);
         EmbedController.play();
-        // spotifyPlay.innerHTML = "Pause";
+
     })
 
-    // Similar Playlists Event listener
-    let similarPlaylists = document.querySelector('#similarPlaylists');
     similarPlaylists.addEventListener('click', async(event) => {
-        console.log("CAN WE PLAY" , event);
-        let newPlaylist = await getPlaylistInfo(event.target.id)
-        console.log("DID I WORK? ", newPlaylist)
+        // Play similar albums
+        let newPlaylist = await getPlaylistInfo(event.target.id);
+        // Update all tracks here
         allTracks = newPlaylist.tracks.items;
-
-        // Convert music duration from ms to seconds
-        duration = timeConvertor(allTracks[songNumber].track.duration_ms);
-        trackSlider.max = duration
-
-        songNumber = 1
-        // console.log("Song Duration: ", formattedTime)
-        EmbedController.loadUri(allTracks[songNumber].track.uri);
-
-        //Update Song Art
-        let songArt = document.querySelector("#songArt");
-        console.log(allTracks[1].track.album.images[0].url)
-        songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
-
-        // Update Song Title 
-        title.innerText = allTracks[songNumber].track.name
-
-        //Play the track
-        EmbedController.play();
-        //Play the art Video background
-        artVideo.play();
+        loadTrack(allTracks, EmbedController, songNumber)
     })
 
 }
@@ -329,8 +291,10 @@ async function findTrack(data){
         frameVinylImg.classList.add('albumFrame')
 
         let cardBtn = document.createElement("button");
+        let controlA = document.createElement('button');
+        cardBtn.classList.add("fa-solid","fa-play","fa-2xl");
         cardBtn.setAttribute("id" , data.playlists.items[i].href);
-        cardBtn.innerText="Play"
+
 
 
         newCard.append(fullBodyCard);
@@ -376,4 +340,90 @@ function trackTime(timeLeft){
         return n > 9 ? "" + n: "0" + n;
     }
     return minutes+":"+n(seconds)
+}
+
+function loadTrack(allTracks, EmbedController, songNumber){
+
+    let title = document.querySelector("#songTitle");
+    let artVideo = document.getElementById('artVideo');
+    let trackSlider = document.querySelector("#trackSlider");
+    let nextTracks = document.querySelector('#nextTracks');
+    let mediaPlayerEl = document.querySelector('#mediaPlayer');
+    let playerToogleBtn = document.querySelector("#playerToogleBtn");
+
+    nextTracks.innerText="";
+    //Update Song Art
+    let songArt = document.querySelector("#songArt");
+
+    //Plan to show next 8 songs
+    let noOfTracks = 8;
+    if (!allTracks.length > 7) {
+        noOfTracks = allTracks.length
+    }
+
+    for(let i = 1; i < noOfTracks; i++){
+
+        // <ul class="controls">
+//   <li >
+//   <a href="javascript:void(0);" id="spotifyPlay">
+//       <span id="playerToogleBtn" class="fa-solid fa-play fa-2xl playericon"></span>
+//   </a>
+// </li>
+// </ul>
+        console.log("Track ", i , " ", allTracks[i].track);
+        let songDiv = document.createElement('div');
+        songDiv.classList.add('tracksList');
+
+        let listSpan = document.createElement('span');
+        
+        listSpan.innerText=allTracks[i].track.name;
+        songDiv.appendChild(listSpan);
+
+        //Inside the song div, add a button
+        let controlUl = document.createElement('ul');
+        controlUl.classList.add('controls');
+        let controlLi = document.createElement('li');
+        let controlA = document.createElement('button');
+        controlA.classList.add("fa-solid","fa-play","fa-2xl");
+        controlA.setAttribute('id', noOfTracks);
+
+        // Add image
+        let songListImg = document.createElement("img");
+        songListImg.classList.add("card-img-top");
+        songListImg.setAttribute("src", allTracks[i].track.album.images[0].url);
+        songDiv.append(songListImg)
+        // console.log("Image",allTracks[i].track.album.images[0].url)
+
+        controlLi.appendChild(controlA);
+        controlUl.appendChild(controlLi);
+        songDiv.appendChild(controlUl)
+        nextTracks.append(songDiv);
+
+
+
+    }
+
+    // Convert music duration from ms to seconds
+    duration = timeConvertor(allTracks[songNumber].track.duration_ms);
+    trackSlider.max = duration
+
+    songNumber = 1
+    // console.log("Song Duration: ", formattedTime)
+    EmbedController.loadUri(allTracks[songNumber].track.uri);
+
+    //console.log(allTracks[1].track.album.images[0].url)
+    songArt.setAttribute("src", allTracks[1].track.album.images[0].url);
+
+    // Update Song Title 
+    title.innerText = allTracks[songNumber].track.name
+
+    //Play the track
+    EmbedController.play();
+    //Play the art Video background
+    artVideo.play();
+
+    // Toggle Play Pause icon on the player 
+    playerToogleBtn.classList.remove("fa-play");
+    playerToogleBtn.classList.add("fa-pause");
+    mediaPlayerEl.classList.remove("hidden");
 }
