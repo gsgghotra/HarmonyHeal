@@ -1,4 +1,4 @@
-console.log("helloworld")
+// console.log("helloworld")
 
 var quoteEl = document.getElementById("quote")
 var h5El = document.createElement('h5');

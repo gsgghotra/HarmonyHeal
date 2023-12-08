@@ -448,6 +448,7 @@ setTimeout(()=>{
             
         };
         console.log('Please Refresh')
+        window.location.reload();
     } else {
         //console.log('I frame loaded');
         
