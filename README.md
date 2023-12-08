@@ -41,7 +41,7 @@ The website has been developed with wellbeing in mind and aims to be a simple to
 - We have used 2 API's for this project. (Spotify and API Ninjas)
 
 
-#### Developers:
+#### Contributors:
 - Arion mehmeti
 - Gurjeet Singh
 - John Skidmore
