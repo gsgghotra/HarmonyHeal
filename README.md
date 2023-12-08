@@ -26,18 +26,19 @@ The website has been developed with wellbeing in mind and aims to be a simple to
 
 ## Screenshots
 - **Home Screen**:
-![Alt text](assets/images/screenshots/)
+![Screenshot of HarmonyHeal](assets/images/screenshots/ScreenshotHome.png)
 
 - **Music Player**:
-![Alt text](assets/images/screenshots/)
+![Screenshot of HarmonyHeal Music Player](assets/images/screenshots/ScreenshotPlayer.png)
 
 - **Mobile First Design**:
-![Alt text](assets/images/screenshots/)
 
+<img src="assets/images/screenshots/Screenshot-mobileHome.png" style="width:200px" alt="Screenshot of music player on mobile phone"/>
+<img src="assets/images/screenshots/Screenshot-MobilePlayer.png" style="width:200px" alt="Screenshot of music player on mobile phone"/>
 
 ## Credits
 
-- We have used 2 API's for this project. ()Spotify and API Ninjas
+- We have used 2 API's for this project. (Spotify and API Ninjas)
 
 
 #### Developers:
